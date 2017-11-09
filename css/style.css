@@ -84,12 +84,12 @@ b {
 /* Header 2 */
 .header_2 {
   padding-bottom: 181px;
-  background: #111111 url(../i/header_2_bg.jpg) no-repeat 50% 50%;
+  background: #111111 url(../i/agnit-background.jpg) no-repeat 50% 50%;
   background-size: cover; }
 
 @media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
   .header_2 {
-    background-image: url(../i/header_2_bg_2x.jpg); } }
+    background-image: url(../i/agnit-background.jpg); } }
   .header_2 .form2 input {
     border: 2px solid rgba(255, 255, 255, 0.3);
     -webkit-border-radius: 6px;
@@ -212,12 +212,12 @@ b {
 
 /* Header 8 */
 .header_8 {
-  background: #121114 url(../i/header_8_bg.jpg) 50% 50%;
+  background: #121114 url(../i/agnit-background.jpg) 50% 50%;
   background-size: cover; }
 
 @media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
   .header_8 {
-    background-image: url(../i/header_8_bg_2x.jpg); } }
+    background-image: url(../i/agnit-background.jpg); } }
   .header_8 .logo {
     display: block; }
   .header_8 h1 {

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agnit - Agnostic Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
+</head>
+
+<body>
+    <div class="bg-white dark:bg-gray-900">
+        <header class="absolute inset-x-0 top-0 z-50">
+            <nav aria-label="Global" class="flex items-center justify-between p-6 lg:px-8">
+                <div class="flex lg:flex-1">
+                    <a href="#" class="-m-1.5 p-1.5">
+                        <span class="sr-only">Agnit</span>
+                        <div class="h-8 w-auto text-2xl font-bold text-indigo-600 dark:text-indigo-400">Agnit</div>
+                    </a>
+                </div>
+                <div class="flex lg:hidden">
+                    <button type="button" command="show-modal" commandfor="mobile-menu"
+                        class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-gray-200">
+                        <span class="sr-only">Open main menu</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon"
+                            aria-hidden="true" class="size-6">
+                            <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="hidden lg:flex lg:gap-x-12">
+                    <a href="#about" class="text-sm/6 font-semibold text-gray-900 dark:text-white">About</a>
+                    <a href="#features" class="text-sm/6 font-semibold text-gray-900 dark:text-white">Features</a>
+                    <a href="#philosophy" class="text-sm/6 font-semibold text-gray-900 dark:text-white">Philosophy</a>
+                    <a href="#contact" class="text-sm/6 font-semibold text-gray-900 dark:text-white">Contact</a>
+                </div>
+                <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+                    <a href="#" class="text-sm/6 font-semibold text-gray-900 dark:text-white">Get Started <span
+                            aria-hidden="true">&rarr;</span></a>
+                </div>
+            </nav>
+            <el-dialog>
+                <dialog id="mobile-menu" class="m-0 p-0 backdrop:bg-transparent lg:hidden">
+                    <div tabindex="0" class="fixed inset-0 focus:outline focus:outline-0">
+                        <el-dialog-panel
+                            class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:bg-gray-900 dark:sm:ring-gray-100/10">
+                            <div class="flex items-center justify-between">
+                                <a href="#" class="-m-1.5 p-1.5">
+                                    <span class="sr-only">Agnit</span>
+                                    <div class="h-8 w-auto text-xl font-bold text-indigo-600 dark:text-indigo-400">Agnit
+                                    </div>
+                                </a>
+                                <button type="button" command="close" commandfor="mobile-menu"
+                                    class="-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-gray-200">
+                                    <span class="sr-only">Close menu</span>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                        data-slot="icon" aria-hidden="true" class="size-6">
+                                        <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="mt-6 flow-root">
+                                <div class="-my-6 divide-y divide-gray-500/10 dark:divide-white/10">
+                                    <div class="space-y-2 py-6">
+                                        <a href="#about"
+                                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5">About</a>
+                                        <a href="#features"
+                                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5">Features</a>
+                                        <a href="#philosophy"
+                                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5">Philosophy</a>
+                                        <a href="#contact"
+                                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5">Contact</a>
+                                    </div>
+                                    <div class="py-6">
+                                        <a href="#"
+                                            class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5">Get
+                                            Started</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </el-dialog-panel>
+                    </div>
+                </dialog>
+            </el-dialog>
+        </header>
+
+        <div class="relative isolate px-6 pt-14 lg:px-8">
+            <div aria-hidden="true"
+                class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
+                <div style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
+                    class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]">
+                </div>
+            </div>
+            <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+                <div class="hidden sm:mb-8 sm:flex sm:justify-center">
+                    <div
+                        class="relative rounded-full px-3 py-1 text-sm/6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20 dark:text-gray-400 dark:ring-white/10 dark:hover:ring-white/20">
+                        Pioneering the future of intelligence systems. <a href="#philosophy"
+                            class="font-semibold text-indigo-600 dark:text-indigo-400"><span aria-hidden="true"
+                                class="absolute inset-0"></span>Learn more <span aria-hidden="true">&rarr;</span></a>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h1
+                        class="text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl dark:text-white">
+                        Agnostic Intelligence</h1>
+                    <p class="mt-8 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8 dark:text-gray-400">
+                        Intelligence that adapts, learns, and evolves without bias or preconceptions. Agnit represents
+                        the next generation of AI systems that remain truly neutral and universally applicable across
+                        all domains and contexts.</p>
+                    <div class="mt-10 flex items-center justify-center gap-x-6">
+                        <a href="#about"
+                            class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:focus-visible:outline-indigo-500">Explore
+                            Agnit</a>
+                        <a href="#features" class="text-sm/6 font-semibold text-gray-900 dark:text-white">Discover
+                            Features <span aria-hidden="true">→</span></a>
+                    </div>
+                </div>
+            </div>
+            <div aria-hidden="true"
+                class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
+                <div style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
+                    class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]">
+                </div>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <section id="about" class="py-24 sm:py-32 bg-gray-50 dark:bg-gray-800">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="mx-auto max-w-2xl lg:text-center">
+                    <h2 class="text-base font-semibold leading-7 text-indigo-600 dark:text-indigo-400">About Agnit</h2>
+                    <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">What is
+                        Agnostic Intelligence?</p>
+                    <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+                        Agnostic Intelligence represents a paradigm shift in AI development. Unlike traditional systems
+                        that carry inherent biases or domain-specific limitations, Agnit operates from a position of
+                        complete neutrality, adapting its reasoning and responses based purely on data and context
+                        rather than predetermined assumptions.
+                    </p>
+                </div>
+                <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
+                    <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
+                        <div class="relative pl-16">
+                            <dt class="text-base font-semibold leading-7 text-gray-900 dark:text-white">
+                                <div
+                                    class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+                                    <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m4.5 0a12.078 12.078 0 00-1.5-1.5m-1.5 1.5a12.078 12.078 0 01-1.5 1.5m-4.5-7.478a12.06 12.06 0 014.5 0m0 0V12m0 0a6.01 6.01 0 001.5.189M12 12a6.01 6.01 0 00-1.5.189m-1.5 0V18" />
+                                    </svg>
+                                </div>
+                                Bias-Free Processing
+                            </dt>
+                            <dd class="mt-2 text-base leading-7 text-gray-600 dark:text-gray-300">Agnit processes
+                                information without cultural, linguistic, or domain-specific preconceptions, ensuring
+                                truly objective analysis and decision-making.</dd>
+                        </div>
+                        <div class="relative pl-16">
+                            <dt class="text-base font-semibold leading-7 text-gray-900 dark:text-white">
+                                <div
+                                    class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+                                    <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+                                    </svg>
+                                </div>
+                                Universal Adaptability
+                            </dt>
+                            <dd class="mt-2 text-base leading-7 text-gray-600 dark:text-gray-300">Seamlessly adapts to
+                                any domain, context, or application without requiring specialized training or
+                                configuration.</dd>
+                        </div>
+                        <div class="relative pl-16">
+                            <dt class="text-base font-semibold leading-7 text-gray-900 dark:text-white">
+                                <div
+                                    class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+                                    <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z" />
+                                    </svg>
+                                </div>
+                                Emergent Intelligence
+                            </dt>
+                            <dd class="mt-2 text-base leading-7 text-gray-600 dark:text-gray-300">Develops sophisticated
+                                understanding through pure pattern recognition and logical inference, free from
+                                human-imposed limitations.</dd>
+                        </div>
+                        <div class="relative pl-16">
+                            <dt class="text-base font-semibold leading-7 text-gray-900 dark:text-white">
+                                <div
+                                    class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+                                    <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                                    </svg>
+                                </div>
+                                Dynamic Learning
+                            </dt>
+                            <dd class="mt-2 text-base leading-7 text-gray-600 dark:text-gray-300">Continuously evolves
+                                and improves its understanding without being constrained by initial training parameters
+                                or human assumptions.</dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-24 sm:py-32">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="mx-auto max-w-2xl lg:text-center">
+                    <h2 class="text-base font-semibold leading-7 text-indigo-600 dark:text-indigo-400">Core Features
+                    </h2>
+                    <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
+                        Intelligence Without Boundaries</p>
+                    <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+                        Agnit's agnostic approach enables unprecedented flexibility and accuracy across all domains of
+                        knowledge and application.
+                    </p>
+                </div>
+                <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+                    <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
+                        <div class="flex flex-col">
+                            <dt
+                                class="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900 dark:text-white">
+                                <div class="h-5 w-5 flex-none rounded-full bg-indigo-600"></div>
+                                Context-Aware Processing
+                            </dt>
+                            <dd
+                                class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
+                                <p class="flex-auto">Understands and adapts to context without relying on pre-programmed
+                                    domain knowledge or cultural assumptions.</p>
+                            </dd>
+                        </div>
+                        <div class="flex flex-col">
+                            <dt
+                                class="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900 dark:text-white">
+                                <div class="h-5 w-5 flex-none rounded-full bg-indigo-600"></div>
+                                Multi-Modal Integration
+                            </dt>
+                            <dd
+                                class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
+                                <p class="flex-auto">Seamlessly processes text, images, audio, and data without
+                                    format-specific limitations or biases.</p>
+                            </dd>
+                        </div>
+                        <div class="flex flex-col">
+                            <dt
+                                class="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900 dark:text-white">
+                                <div class="h-5 w-5 flex-none rounded-full bg-indigo-600"></div>
+                                Ethical Neutrality
+                            </dt>
+                            <dd
+                                class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
+                                <p class="flex-auto">Maintains ethical objectivity by avoiding predetermined moral
+                                    frameworks while respecting universal principles.</p>
+                            </dd>
+                        </div>
+                        <div class="flex flex-col">
+                            <dt
+                                class="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900 dark:text-white">
+                                <div class="h-5 w-5 flex-none rounded-full bg-indigo-600"></div>
+                                Real-Time Adaptation
+                            </dt>
+                            <dd
+                                class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
+                                <p class="flex-auto">Adjusts reasoning patterns and responses in real-time based on new
+                                    information and changing contexts.</p>
+                            </dd>
+                        </div>
+                        <div class="flex flex-col">
+                            <dt
+                                class="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900 dark:text-white">
+                                <div class="h-5 w-5 flex-none rounded-full bg-indigo-600"></div>
+                                Cross-Domain Transfer
+                            </dt>
+                            <dd
+                                class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
+                                <p class="flex-auto">Applies insights and patterns learned in one domain to completely
+                                    different fields without manual configuration.</p>
+                            </dd>
+                        </div>
+                        <div class="flex flex-col">
+                            <dt
+                                class="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900 dark:text-white">
+                                <div class="h-5 w-5 flex-none rounded-full bg-indigo-600"></div>
+                                Transparent Reasoning
+                            </dt>
+                            <dd
+                                class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
+                                <p class="flex-auto">Provides clear explanations of its reasoning process without hiding
+                                    behind black-box algorithms.</p>
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </section>
+
+        <!-- Philosophy Section -->
+        <section id="philosophy" class="py-24 sm:py-32 bg-gray-50 dark:bg-gray-800">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="mx-auto max-w-2xl lg:mx-0">
+                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">The
+                        Philosophy of Agnostic Intelligence</h2>
+                    <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+                        Traditional AI systems are built with inherent assumptions about the world, language, and human
+                        behavior. Agnit takes a fundamentally different approach.
+                    </p>
+                </div>
+                <div
+                    class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:mt-10 lg:max-w-none lg:grid-cols-12">
+                    <div class="relative lg:order-last lg:col-span-5">
+                        <svg class="absolute -top-[40rem] left-1/2 h-[64rem] w-[175.5rem] -translate-x-1/2 stroke-gray-900/10 [mask-image:radial-gradient(64rem_64rem_at_111.5rem_0%,white,transparent)] dark:stroke-white/10"
+                            aria-hidden="true">
+                            <defs>
+                                <pattern id="e87443c8-56e4-4c20-9111-55b82fa704e3" width="200" height="200"
+                                    patternUnits="userSpaceOnUse">
+                                    <path d="M0.5 200V.5h199v199.5H0.5Z" fill="none" />
+                                </pattern>
+                            </defs>
+                            <rect width="100%" height="100%" stroke-width="0"
+                                fill="url(#e87443c8-56e4-4c20-9111-55b82fa704e3)" />
+                        </svg>
+                        <figure class="border-l border-indigo-600 pl-8">
+                            <blockquote
+                                class="text-xl font-semibold leading-8 tracking-tight text-gray-900 dark:text-white">
+                                <p>"True intelligence emerges not from what we know, but from our ability to approach
+                                    the unknown without preconceptions."</p>
+                            </blockquote>
+                            <figcaption class="mt-8 flex gap-x-4">
+                                <div class="text-sm leading-6">
+                                    <div class="font-semibold text-gray-900 dark:text-white">Agnit Core Principle</div>
+                                    <div class="text-gray-600 dark:text-gray-400">Foundation of Agnostic Intelligence
+                                    </div>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="max-w-xl text-base leading-7 text-gray-700 lg:col-span-7 dark:text-gray-300">
+                        <p>Agnostic Intelligence operates on the principle that true understanding comes from
+                            approaching problems without predetermined solutions or biases. This means:</p>
+                        <ul role="list" class="mt-8 max-w-xl space-y-8 text-gray-600 dark:text-gray-400">
+                            <li class="flex gap-x-3">
+                                <svg class="mt-1 h-5 w-5 flex-none text-indigo-600" viewBox="0 0 20 20"
+                                    fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd"
+                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.236 4.53L8.23 10.661a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <span><strong class="font-semibold text-gray-900 dark:text-white">No Cultural
+                                        Assumptions.</strong> Agnit doesn't assume Western, Eastern, or any specific
+                                    cultural perspective as default.</span>
+                            </li>
+                            <li class="flex gap-x-3">
+                                <svg class="mt-1 h-5 w-5 flex-none text-indigo-600" viewBox="0 0 20 20"
+                                    fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd"
+                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.236 4.53L8.23 10.661a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <span><strong class="font-semibold text-gray-900 dark:text-white">Domain
+                                        Independence.</strong> Knowledge from one field doesn't create rigid
+                                    expectations for another.</span>
+                            </li>
+                            <li class="flex gap-x-3">
+                                <svg class="mt-1 h-5 w-5 flex-none text-indigo-600" viewBox="0 0 20 20"
+                                    fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd"
+                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.236 4.53L8.23 10.661a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <span><strong class="font-semibold text-gray-900 dark:text-white">Methodological
+                                        Neutrality.</strong> The approach to problem-solving emerges from the problem
+                                    itself, not from preset methodologies.</span>
+                            </li>
+                        </ul>
+                        <p class="mt-8">This philosophy enables Agnit to discover novel solutions, identify patterns
+                            that human-biased systems might miss, and provide insights that transcend traditional
+                            disciplinary boundaries.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 sm:py-32">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="mx-auto max-w-2xl text-center">
+                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">Ready to
+                        Experience Agnostic Intelligence?</h2>
+                    <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+                        Join the future of truly unbiased, adaptive intelligence. Discover what's possible when AI
+                        operates without preconceptions.
+                    </p>
+                    <div class="mt-10 flex items-center justify-center gap-x-6">
+                        <a href="#"
+                            class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get
+                            Started</a>
+                        <a href="#" class="text-sm font-semibold leading-6 text-gray-900 dark:text-white">Contact Us
+                            <span aria-hidden="true">→</span></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900">
+            <div class="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8">
+                <div class="flex justify-center space-x-6 md:order-2">
+                    <a href="#" class="text-gray-400 hover:text-gray-300">
+                        <span class="sr-only">GitHub</span>
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="mt-8 md:order-1 md:mt-0">
+                    <p class="text-center text-xs leading-5 text-gray-400">&copy; 2025 Agnit. Pioneering Agnostic
+                        Intelligence.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

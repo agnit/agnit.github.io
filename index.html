@@ -4,433 +4,748 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agnit - Agnostic Intelligence</title>
+    <title>Agnit - Agentic IT Infrastructure for Business</title>
+    <meta name="description"
+        content="Agnit brings agentic capabilities to business through governed software infrastructure, integrations, and consulting for production AI agent adoption.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ink: "#111827",
+                        field: "#f5f7f8",
+                        copper: "#b45309",
+                        signal: "#0f766e",
+                        steel: "#334155"
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"]
+                    },
+                    boxShadow: {
+                        "soft-xl": "0 24px 80px rgba(15, 23, 42, 0.14)"
+                    }
+                }
+            }
+        };
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            letter-spacing: 0;
+            overflow-x: hidden;
+        }
+
+        .hero-image {
+            background-image:
+                linear-gradient(90deg, rgba(7, 12, 18, 0.92) 0%, rgba(7, 12, 18, 0.78) 34%, rgba(7, 12, 18, 0.42) 62%, rgba(7, 12, 18, 0.18) 100%),
+                url("assets/agnit-agentic-it-hero.png");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .grid-pattern {
+            background-image:
+                linear-gradient(rgba(15, 118, 110, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(15, 118, 110, 0.08) 1px, transparent 1px);
+            background-size: 44px 44px;
+        }
+    </style>
 </head>
 
-<body>
-    <div class="bg-white dark:bg-gray-900">
-        <header class="absolute inset-x-0 top-0 z-50">
-            <nav aria-label="Global" class="flex items-center justify-between p-6 lg:px-8">
-                <div class="flex lg:flex-1">
-                    <a href="#" class="-m-1.5 p-1.5">
-                        <span class="sr-only">Agnit</span>
-                        <div class="h-8 w-auto text-2xl font-bold text-indigo-600 dark:text-indigo-400">Agnit</div>
-                    </a>
-                </div>
-                <div class="flex lg:hidden">
-                    <button type="button" command="show-modal" commandfor="mobile-menu"
-                        class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-gray-200">
-                        <span class="sr-only">Open main menu</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon"
-                            aria-hidden="true" class="size-6">
-                            <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
-                    </button>
-                </div>
-                <div class="hidden lg:flex lg:gap-x-12">
-                    <a href="#about" class="text-sm/6 font-semibold text-gray-900 dark:text-white">About</a>
-                    <a href="#features" class="text-sm/6 font-semibold text-gray-900 dark:text-white">Features</a>
-                    <a href="#philosophy" class="text-sm/6 font-semibold text-gray-900 dark:text-white">Philosophy</a>
-                    <a href="#contact" class="text-sm/6 font-semibold text-gray-900 dark:text-white">Contact</a>
-                </div>
-                <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <a href="#" class="text-sm/6 font-semibold text-gray-900 dark:text-white">Get Started <span
-                            aria-hidden="true">&rarr;</span></a>
-                </div>
-            </nav>
-            <el-dialog>
-                <dialog id="mobile-menu" class="m-0 p-0 backdrop:bg-transparent lg:hidden">
-                    <div tabindex="0" class="fixed inset-0 focus:outline focus:outline-0">
-                        <el-dialog-panel
-                            class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:bg-gray-900 dark:sm:ring-gray-100/10">
-                            <div class="flex items-center justify-between">
-                                <a href="#" class="-m-1.5 p-1.5">
-                                    <span class="sr-only">Agnit</span>
-                                    <div class="h-8 w-auto text-xl font-bold text-indigo-600 dark:text-indigo-400">Agnit
-                                    </div>
-                                </a>
-                                <button type="button" command="close" commandfor="mobile-menu"
-                                    class="-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-gray-200">
-                                    <span class="sr-only">Close menu</span>
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                        data-slot="icon" aria-hidden="true" class="size-6">
-                                        <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </button>
-                            </div>
-                            <div class="mt-6 flow-root">
-                                <div class="-my-6 divide-y divide-gray-500/10 dark:divide-white/10">
-                                    <div class="space-y-2 py-6">
-                                        <a href="#about"
-                                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5">About</a>
-                                        <a href="#features"
-                                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5">Features</a>
-                                        <a href="#philosophy"
-                                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5">Philosophy</a>
-                                        <a href="#contact"
-                                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5">Contact</a>
-                                    </div>
-                                    <div class="py-6">
-                                        <a href="#"
-                                            class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5">Get
-                                            Started</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </el-dialog-panel>
-                    </div>
-                </dialog>
-            </el-dialog>
-        </header>
-
-        <div class="relative isolate px-6 pt-14 lg:px-8">
-            <div aria-hidden="true"
-                class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
-                <div style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
-                    class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]">
-                </div>
+<body class="bg-white text-ink antialiased">
+    <header class="absolute inset-x-0 top-0 z-50">
+        <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 lg:px-8" aria-label="Global">
+            <a href="#top" class="flex items-center gap-3 text-white">
+                    <span class="flex h-10 w-10 items-center justify-center rounded bg-white/10 ring-1 ring-white/20">
+                    <i data-lucide="network" class="h-5 w-5"></i>
+                </span>
+                <span class="text-xl font-semibold">Agnit</span>
+            </a>
+            <button id="menu-toggle" type="button"
+                class="inline-flex h-10 w-10 items-center justify-center rounded border border-white/20 bg-white/10 text-white lg:hidden"
+                aria-controls="mobile-nav" aria-expanded="false">
+                <span class="sr-only">Open navigation</span>
+                <i data-lucide="menu" class="h-5 w-5"></i>
+            </button>
+            <div class="hidden items-center gap-8 lg:flex">
+                <a href="#platform" class="text-sm font-medium text-white/80 hover:text-white">Platform</a>
+                <a href="#cases" class="text-sm font-medium text-white/80 hover:text-white">Cases</a>
+                <a href="#trends" class="text-sm font-medium text-white/80 hover:text-white">Trends</a>
+                <a href="#engagement" class="text-sm font-medium text-white/80 hover:text-white">Engagement</a>
+                <a href="mailto:contact@agnit.com"
+                    class="inline-flex items-center gap-2 rounded bg-white px-4 py-2 text-sm font-semibold text-ink hover:bg-teal-50">
+                    <i data-lucide="mail" class="h-4 w-4"></i>
+                    contact@agnit.com
+                </a>
             </div>
-            <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-                <div class="hidden sm:mb-8 sm:flex sm:justify-center">
-                    <div
-                        class="relative rounded-full px-3 py-1 text-sm/6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20 dark:text-gray-400 dark:ring-white/10 dark:hover:ring-white/20">
-                        Pioneering the future of intelligence systems. <a href="#philosophy"
-                            class="font-semibold text-indigo-600 dark:text-indigo-400"><span aria-hidden="true"
-                                class="absolute inset-0"></span>Learn more <span aria-hidden="true">&rarr;</span></a>
-                    </div>
-                </div>
-                <div class="text-center">
-                    <h1
-                        class="text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl dark:text-white">
-                        Agnostic Intelligence</h1>
-                    <p class="mt-8 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8 dark:text-gray-400">
-                        Intelligence that adapts, learns, and evolves without bias or preconceptions. Agnit represents
-                        the next generation of AI systems that remain truly neutral and universally applicable across
-                        all domains and contexts.</p>
-                    <div class="mt-10 flex items-center justify-center gap-x-6">
-                        <a href="#about"
-                            class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:focus-visible:outline-indigo-500">Explore
-                            Agnit</a>
-                        <a href="#features" class="text-sm/6 font-semibold text-gray-900 dark:text-white">Discover
-                            Features <span aria-hidden="true">→</span></a>
-                    </div>
-                </div>
-            </div>
-            <div aria-hidden="true"
-                class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
-                <div style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
-                    class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]">
-                </div>
+        </nav>
+        <div id="mobile-nav" class="mx-5 hidden rounded border border-white/10 bg-ink/95 p-4 shadow-soft-xl lg:hidden">
+            <div class="grid gap-3">
+                <a href="#platform" class="text-sm font-medium text-white/80">Platform</a>
+                <a href="#cases" class="text-sm font-medium text-white/80">Cases</a>
+                <a href="#trends" class="text-sm font-medium text-white/80">Trends</a>
+                <a href="#engagement" class="text-sm font-medium text-white/80">Engagement</a>
+                <a href="mailto:contact@agnit.com" class="text-sm font-semibold text-teal-200">contact@agnit.com</a>
             </div>
         </div>
+    </header>
 
-        <!-- About Section -->
-        <section id="about" class="py-24 sm:py-32 bg-gray-50 dark:bg-gray-800">
-            <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                <div class="mx-auto max-w-2xl lg:text-center">
-                    <h2 class="text-base font-semibold leading-7 text-indigo-600 dark:text-indigo-400">About Agnit</h2>
-                    <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">What is
-                        Agnostic Intelligence?</p>
-                    <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-                        Agnostic Intelligence represents a paradigm shift in AI development. Unlike traditional systems
-                        that carry inherent biases or domain-specific limitations, Agnit operates from a position of
-                        complete neutrality, adapting its reasoning and responses based purely on data and context
-                        rather than predetermined assumptions.
-                    </p>
-                </div>
-                <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
-                    <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
-                        <div class="relative pl-16">
-                            <dt class="text-base font-semibold leading-7 text-gray-900 dark:text-white">
-                                <div
-                                    class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-                                    <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m4.5 0a12.078 12.078 0 00-1.5-1.5m-1.5 1.5a12.078 12.078 0 01-1.5 1.5m-4.5-7.478a12.06 12.06 0 014.5 0m0 0V12m0 0a6.01 6.01 0 001.5.189M12 12a6.01 6.01 0 00-1.5.189m-1.5 0V18" />
-                                    </svg>
-                                </div>
-                                Bias-Free Processing
-                            </dt>
-                            <dd class="mt-2 text-base leading-7 text-gray-600 dark:text-gray-300">Agnit processes
-                                information without cultural, linguistic, or domain-specific preconceptions, ensuring
-                                truly objective analysis and decision-making.</dd>
-                        </div>
-                        <div class="relative pl-16">
-                            <dt class="text-base font-semibold leading-7 text-gray-900 dark:text-white">
-                                <div
-                                    class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-                                    <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
-                                    </svg>
-                                </div>
-                                Universal Adaptability
-                            </dt>
-                            <dd class="mt-2 text-base leading-7 text-gray-600 dark:text-gray-300">Seamlessly adapts to
-                                any domain, context, or application without requiring specialized training or
-                                configuration.</dd>
-                        </div>
-                        <div class="relative pl-16">
-                            <dt class="text-base font-semibold leading-7 text-gray-900 dark:text-white">
-                                <div
-                                    class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-                                    <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z" />
-                                    </svg>
-                                </div>
-                                Emergent Intelligence
-                            </dt>
-                            <dd class="mt-2 text-base leading-7 text-gray-600 dark:text-gray-300">Develops sophisticated
-                                understanding through pure pattern recognition and logical inference, free from
-                                human-imposed limitations.</dd>
-                        </div>
-                        <div class="relative pl-16">
-                            <dt class="text-base font-semibold leading-7 text-gray-900 dark:text-white">
-                                <div
-                                    class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-                                    <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
-                                    </svg>
-                                </div>
-                                Dynamic Learning
-                            </dt>
-                            <dd class="mt-2 text-base leading-7 text-gray-600 dark:text-gray-300">Continuously evolves
-                                and improves its understanding without being constrained by initial training parameters
-                                or human assumptions.</dd>
-                        </div>
-                    </dl>
-                </div>
-            </div>
-        </section>
-
-        <!-- Features Section -->
-        <section id="features" class="py-24 sm:py-32">
-            <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                <div class="mx-auto max-w-2xl lg:text-center">
-                    <h2 class="text-base font-semibold leading-7 text-indigo-600 dark:text-indigo-400">Core Features
-                    </h2>
-                    <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
-                        Intelligence Without Boundaries</p>
-                    <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-                        Agnit's agnostic approach enables unprecedented flexibility and accuracy across all domains of
-                        knowledge and application.
-                    </p>
-                </div>
-                <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-                    <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
-                        <div class="flex flex-col">
-                            <dt
-                                class="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900 dark:text-white">
-                                <div class="h-5 w-5 flex-none rounded-full bg-indigo-600"></div>
-                                Context-Aware Processing
-                            </dt>
-                            <dd
-                                class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
-                                <p class="flex-auto">Understands and adapts to context without relying on pre-programmed
-                                    domain knowledge or cultural assumptions.</p>
-                            </dd>
-                        </div>
-                        <div class="flex flex-col">
-                            <dt
-                                class="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900 dark:text-white">
-                                <div class="h-5 w-5 flex-none rounded-full bg-indigo-600"></div>
-                                Multi-Modal Integration
-                            </dt>
-                            <dd
-                                class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
-                                <p class="flex-auto">Seamlessly processes text, images, audio, and data without
-                                    format-specific limitations or biases.</p>
-                            </dd>
-                        </div>
-                        <div class="flex flex-col">
-                            <dt
-                                class="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900 dark:text-white">
-                                <div class="h-5 w-5 flex-none rounded-full bg-indigo-600"></div>
-                                Ethical Neutrality
-                            </dt>
-                            <dd
-                                class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
-                                <p class="flex-auto">Maintains ethical objectivity by avoiding predetermined moral
-                                    frameworks while respecting universal principles.</p>
-                            </dd>
-                        </div>
-                        <div class="flex flex-col">
-                            <dt
-                                class="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900 dark:text-white">
-                                <div class="h-5 w-5 flex-none rounded-full bg-indigo-600"></div>
-                                Real-Time Adaptation
-                            </dt>
-                            <dd
-                                class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
-                                <p class="flex-auto">Adjusts reasoning patterns and responses in real-time based on new
-                                    information and changing contexts.</p>
-                            </dd>
-                        </div>
-                        <div class="flex flex-col">
-                            <dt
-                                class="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900 dark:text-white">
-                                <div class="h-5 w-5 flex-none rounded-full bg-indigo-600"></div>
-                                Cross-Domain Transfer
-                            </dt>
-                            <dd
-                                class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
-                                <p class="flex-auto">Applies insights and patterns learned in one domain to completely
-                                    different fields without manual configuration.</p>
-                            </dd>
-                        </div>
-                        <div class="flex flex-col">
-                            <dt
-                                class="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900 dark:text-white">
-                                <div class="h-5 w-5 flex-none rounded-full bg-indigo-600"></div>
-                                Transparent Reasoning
-                            </dt>
-                            <dd
-                                class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
-                                <p class="flex-auto">Provides clear explanations of its reasoning process without hiding
-                                    behind black-box algorithms.</p>
-                            </dd>
-                        </div>
-                    </dl>
-                </div>
-            </div>
-        </section>
-
-        <!-- Philosophy Section -->
-        <section id="philosophy" class="py-24 sm:py-32 bg-gray-50 dark:bg-gray-800">
-            <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                <div class="mx-auto max-w-2xl lg:mx-0">
-                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">The
-                        Philosophy of Agnostic Intelligence</h2>
-                    <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-                        Traditional AI systems are built with inherent assumptions about the world, language, and human
-                        behavior. Agnit takes a fundamentally different approach.
-                    </p>
-                </div>
-                <div
-                    class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:mt-10 lg:max-w-none lg:grid-cols-12">
-                    <div class="relative lg:order-last lg:col-span-5">
-                        <svg class="absolute -top-[40rem] left-1/2 h-[64rem] w-[175.5rem] -translate-x-1/2 stroke-gray-900/10 [mask-image:radial-gradient(64rem_64rem_at_111.5rem_0%,white,transparent)] dark:stroke-white/10"
-                            aria-hidden="true">
-                            <defs>
-                                <pattern id="e87443c8-56e4-4c20-9111-55b82fa704e3" width="200" height="200"
-                                    patternUnits="userSpaceOnUse">
-                                    <path d="M0.5 200V.5h199v199.5H0.5Z" fill="none" />
-                                </pattern>
-                            </defs>
-                            <rect width="100%" height="100%" stroke-width="0"
-                                fill="url(#e87443c8-56e4-4c20-9111-55b82fa704e3)" />
-                        </svg>
-                        <figure class="border-l border-indigo-600 pl-8">
-                            <blockquote
-                                class="text-xl font-semibold leading-8 tracking-tight text-gray-900 dark:text-white">
-                                <p>"True intelligence emerges not from what we know, but from our ability to approach
-                                    the unknown without preconceptions."</p>
-                            </blockquote>
-                            <figcaption class="mt-8 flex gap-x-4">
-                                <div class="text-sm leading-6">
-                                    <div class="font-semibold text-gray-900 dark:text-white">Agnit Core Principle</div>
-                                    <div class="text-gray-600 dark:text-gray-400">Foundation of Agnostic Intelligence
-                                    </div>
-                                </div>
-                            </figcaption>
-                        </figure>
+    <main id="top">
+        <section class="hero-image flex min-h-[88svh] items-center overflow-hidden pt-24 text-white sm:min-h-[90svh]">
+            <div class="mx-auto min-w-0 w-full max-w-7xl px-5 pb-12 lg:px-8">
+                <div class="min-w-0 max-w-3xl">
+                    <div
+                        class="inline-flex max-w-full items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-sm text-white/80 backdrop-blur">
+                        <i data-lucide="cpu" class="h-4 w-4 text-teal-200"></i>
+                        <span class="min-w-0 truncate">Software and consulting for production AI agents</span>
                     </div>
-                    <div class="max-w-xl text-base leading-7 text-gray-700 lg:col-span-7 dark:text-gray-300">
-                        <p>Agnostic Intelligence operates on the principle that true understanding comes from
-                            approaching problems without predetermined solutions or biases. This means:</p>
-                        <ul role="list" class="mt-8 max-w-xl space-y-8 text-gray-600 dark:text-gray-400">
-                            <li class="flex gap-x-3">
-                                <svg class="mt-1 h-5 w-5 flex-none text-indigo-600" viewBox="0 0 20 20"
-                                    fill="currentColor" aria-hidden="true">
-                                    <path fill-rule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.236 4.53L8.23 10.661a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                <span><strong class="font-semibold text-gray-900 dark:text-white">No Cultural
-                                        Assumptions.</strong> Agnit doesn't assume Western, Eastern, or any specific
-                                    cultural perspective as default.</span>
+                    <h1 class="mt-7 max-w-2xl text-5xl font-semibold leading-[0.98] sm:text-6xl lg:text-7xl">
+                        Agentic IT Infrastructure
+                    </h1>
+                    <p class="mt-6 max-w-2xl text-lg leading-8 text-white/75 sm:text-xl">
+                        Agnit helps business leaders turn AI agents from isolated experiments into governed operating
+                        capacity. We design, build, integrate, and manage agentic systems that work across business
+                        processes, enterprise software, data, approvals, and human teams.
+                    </p>
+                    <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+                        <a href="mailto:contact@agnit.com"
+                            class="inline-flex w-full items-center justify-center gap-2 rounded bg-teal-300 px-4 py-3 text-sm font-semibold text-ink hover:bg-teal-200 sm:w-auto sm:px-5">
+                            <i data-lucide="send" class="h-4 w-4"></i>
+                            Discuss your agent roadmap
+                        </a>
+                        <a href="#cases"
+                            class="inline-flex w-full items-center justify-center gap-2 rounded border border-white/25 px-4 py-3 text-sm font-semibold text-white hover:bg-white/10 sm:w-auto sm:px-5">
+                            <i data-lucide="briefcase-business" class="h-4 w-4"></i>
+                            See business cases
+                        </a>
+                    </div>
+                    <dl class="mt-10 hidden max-w-3xl grid-cols-3 gap-5 sm:grid">
+                        <div class="border-l border-teal-300/60 pl-4">
+                            <dt class="text-2xl font-semibold">24/7</dt>
+                            <dd class="mt-1 text-sm leading-5 text-white/70">agent execution layer for repeatable work
+                            </dd>
+                        </div>
+                        <div class="border-l border-amber-300/70 pl-4">
+                            <dt class="text-2xl font-semibold">Human</dt>
+                            <dd class="mt-1 text-sm leading-5 text-white/70">approval, exception, and escalation design
+                            </dd>
+                        </div>
+                        <div class="border-l border-sky-300/70 pl-4">
+                            <dt class="text-2xl font-semibold">Audit</dt>
+                            <dd class="mt-1 text-sm leading-5 text-white/70">observability, policy, and controls by design
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </section>
+
+        <section class="border-y border-zinc-200 bg-field py-5">
+            <div
+                class="mx-auto grid max-w-7xl grid-cols-1 gap-4 px-5 text-sm font-medium text-zinc-600 sm:grid-cols-2 lg:grid-cols-4 lg:px-8">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="workflow" class="h-4 w-4 text-signal"></i>
+                    Process orchestration
+                </div>
+                <div class="flex items-center gap-2">
+                    <i data-lucide="shield-check" class="h-4 w-4 text-signal"></i>
+                    Governance layer
+                </div>
+                <div class="flex items-center gap-2">
+                    <i data-lucide="plug" class="h-4 w-4 text-signal"></i>
+                    Enterprise integrations
+                </div>
+                <div class="flex items-center gap-2">
+                    <i data-lucide="chart-no-axes-combined" class="h-4 w-4 text-signal"></i>
+                    Measurable adoption
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 sm:py-28">
+            <div class="mx-auto max-w-7xl px-5 lg:px-8">
+                <div class="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+                    <div>
+                        <p class="text-sm font-semibold uppercase tracking-wide text-signal">Executive thesis</p>
+                        <h2 class="mt-4 text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+                            Agents are becoming a business infrastructure layer.
+                        </h2>
+                        <p class="mt-6 text-lg leading-8 text-zinc-600">
+                            The next stage of enterprise AI is not another chatbot bolted onto existing software. It is
+                            a managed layer of agents that can understand goals, call tools, coordinate work, respect
+                            controls, and keep improving through operational feedback.
+                        </p>
+                    </div>
+                    <div class="grid gap-5 sm:grid-cols-3">
+                        <article class="rounded border border-zinc-200 bg-white p-6 shadow-sm">
+                            <i data-lucide="users-round" class="h-7 w-7 text-signal"></i>
+                            <h3 class="mt-5 text-lg font-semibold text-ink">From tools to workforces</h3>
+                            <p class="mt-3 text-sm leading-6 text-zinc-600">
+                                Agents can own recurring tasks, watch queues, prepare decisions, and collaborate with
+                                people instead of waiting for one-off prompts.
+                            </p>
+                        </article>
+                        <article class="rounded border border-zinc-200 bg-white p-6 shadow-sm">
+                            <i data-lucide="route" class="h-7 w-7 text-copper"></i>
+                            <h3 class="mt-5 text-lg font-semibold text-ink">From automation to orchestration</h3>
+                            <p class="mt-3 text-sm leading-6 text-zinc-600">
+                                Traditional automation follows fixed rules. Agentic orchestration handles variation,
+                                gathers context, and chooses the next action under policy.
+                            </p>
+                        </article>
+                        <article class="rounded border border-zinc-200 bg-white p-6 shadow-sm">
+                            <i data-lucide="landmark" class="h-7 w-7 text-sky-700"></i>
+                            <h3 class="mt-5 text-lg font-semibold text-ink">From pilots to operating model</h3>
+                            <p class="mt-3 text-sm leading-6 text-zinc-600">
+                                Durable value requires identity, permissioning, telemetry, change management, and
+                                executive ownership across functions.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="platform" class="bg-zinc-950 py-20 text-white sm:py-28">
+            <div class="mx-auto max-w-7xl px-5 lg:px-8">
+                <div class="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+                    <div>
+                        <p class="text-sm font-semibold uppercase tracking-wide text-teal-300">What Agnit delivers</p>
+                        <h2 class="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
+                            A software platform and consulting system for real agent adoption.
+                        </h2>
+                        <p class="mt-6 text-lg leading-8 text-zinc-300">
+                            Agnit combines a practical agent infrastructure stack with hands-on transformation work. We
+                            help leadership choose the right use cases, connect the right systems, control the risks,
+                            and move from prototype to production with a repeatable operating model.
+                        </p>
+                        <div class="mt-8 flex flex-wrap gap-3">
+                            <span class="rounded-full bg-white/10 px-4 py-2 text-sm text-zinc-200">Agent runtime</span>
+                            <span class="rounded-full bg-white/10 px-4 py-2 text-sm text-zinc-200">Integration fabric</span>
+                            <span class="rounded-full bg-white/10 px-4 py-2 text-sm text-zinc-200">Control plane</span>
+                            <span class="rounded-full bg-white/10 px-4 py-2 text-sm text-zinc-200">Adoption playbooks</span>
+                        </div>
+                    </div>
+                    <div class="grid-pattern rounded border border-white/10 bg-white/[0.03] p-5">
+                        <div class="space-y-3">
+                            <div class="rounded border border-teal-300/30 bg-teal-300/10 p-4">
+                                <div class="flex items-center gap-3">
+                                    <i data-lucide="monitor-cog" class="h-5 w-5 text-teal-200"></i>
+                                    <p class="font-semibold">Business experience layer</p>
+                                </div>
+                                <p class="mt-2 text-sm text-zinc-300">Executive dashboards, team work queues, approvals,
+                                    agent briefs, and exception review.</p>
+                            </div>
+                            <div class="grid gap-3 sm:grid-cols-2">
+                                <div class="rounded border border-white/10 bg-zinc-900/80 p-4">
+                                    <p class="text-sm font-semibold text-white">Agent orchestration</p>
+                                    <p class="mt-2 text-sm leading-6 text-zinc-400">Role-based agents, memory, planning,
+                                        task routing, and multi-agent handoffs.</p>
+                                </div>
+                                <div class="rounded border border-white/10 bg-zinc-900/80 p-4">
+                                    <p class="text-sm font-semibold text-white">Governance control plane</p>
+                                    <p class="mt-2 text-sm leading-6 text-zinc-400">Policies, approvals, observability,
+                                        audit trails, risk tiers, and rollback paths.</p>
+                                </div>
+                            </div>
+                            <div class="grid gap-3 sm:grid-cols-3">
+                                <div class="rounded border border-white/10 bg-zinc-900/80 p-4">
+                                    <p class="text-sm font-semibold text-white">Systems</p>
+                                    <p class="mt-2 text-sm text-zinc-400">CRM, ERP, ITSM, HRIS, data warehouses.</p>
+                                </div>
+                                <div class="rounded border border-white/10 bg-zinc-900/80 p-4">
+                                    <p class="text-sm font-semibold text-white">Knowledge</p>
+                                    <p class="mt-2 text-sm text-zinc-400">Policies, SOPs, tickets, contracts, records.
+                                    </p>
+                                </div>
+                                <div class="rounded border border-white/10 bg-zinc-900/80 p-4">
+                                    <p class="text-sm font-semibold text-white">Models</p>
+                                    <p class="mt-2 text-sm text-zinc-400">Multi-model routing for cost, accuracy, and
+                                        privacy.</p>
+                                </div>
+                            </div>
+                            <div class="rounded border border-amber-300/30 bg-amber-300/10 p-4">
+                                <div class="flex items-center gap-3">
+                                    <i data-lucide="lock-keyhole" class="h-5 w-5 text-amber-200"></i>
+                                    <p class="font-semibold">Identity, permissioning, telemetry, and human-in-loop
+                                        safeguards</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 sm:py-28">
+            <div class="mx-auto max-w-7xl px-5 lg:px-8">
+                <div class="max-w-3xl">
+                    <p class="text-sm font-semibold uppercase tracking-wide text-signal">Platform capabilities</p>
+                    <h2 class="mt-4 text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+                        Everything needed to make agents useful inside real companies.
+                    </h2>
+                </div>
+                <div class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+                    <article class="rounded border border-zinc-200 p-6">
+                        <i data-lucide="bot" class="h-7 w-7 text-signal"></i>
+                        <h3 class="mt-5 text-lg font-semibold">Role-based agent teams</h3>
+                        <p class="mt-3 text-sm leading-6 text-zinc-600">
+                            Configure agents around business roles: service analyst, revenue operations coordinator,
+                            procurement reviewer, financial close assistant, compliance analyst, or knowledge steward.
+                        </p>
+                    </article>
+                    <article class="rounded border border-zinc-200 p-6">
+                        <i data-lucide="git-branch-plus" class="h-7 w-7 text-copper"></i>
+                        <h3 class="mt-5 text-lg font-semibold">Workflow orchestration</h3>
+                        <p class="mt-3 text-sm leading-6 text-zinc-600">
+                            Break goals into steps, call tools, gather evidence, route exceptions, and keep humans
+                            involved where judgment, approval, or accountability matters.
+                        </p>
+                    </article>
+                    <article class="rounded border border-zinc-200 p-6">
+                        <i data-lucide="database-zap" class="h-7 w-7 text-sky-700"></i>
+                        <h3 class="mt-5 text-lg font-semibold">Enterprise data access</h3>
+                        <p class="mt-3 text-sm leading-6 text-zinc-600">
+                            Use company knowledge safely through retrieval, structured records, permission-aware access,
+                            source citations, and data freshness controls.
+                        </p>
+                    </article>
+                    <article class="rounded border border-zinc-200 p-6">
+                        <i data-lucide="plug-zap" class="h-7 w-7 text-signal"></i>
+                        <h3 class="mt-5 text-lg font-semibold">Tool and system integration</h3>
+                        <p class="mt-3 text-sm leading-6 text-zinc-600">
+                            Connect agents to CRM, ERP, service desk, document repositories, email, messaging, BI,
+                            cloud services, and internal APIs.
+                        </p>
+                    </article>
+                    <article class="rounded border border-zinc-200 p-6">
+                        <i data-lucide="scan-eye" class="h-7 w-7 text-copper"></i>
+                        <h3 class="mt-5 text-lg font-semibold">Observability and audit</h3>
+                        <p class="mt-3 text-sm leading-6 text-zinc-600">
+                            Track every prompt, source, action, tool call, decision path, approval, escalation, and
+                            outcome so leaders can manage agent performance like an operating capability.
+                        </p>
+                    </article>
+                    <article class="rounded border border-zinc-200 p-6">
+                        <i data-lucide="graduation-cap" class="h-7 w-7 text-sky-700"></i>
+                        <h3 class="mt-5 text-lg font-semibold">Adoption and enablement</h3>
+                        <p class="mt-3 text-sm leading-6 text-zinc-600">
+                            Train teams, redesign processes, create governance forums, define success metrics, and
+                            build the internal confidence required for production use.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="cases" class="bg-field py-20 sm:py-28">
+            <div class="mx-auto max-w-7xl px-5 lg:px-8">
+                <div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+                    <div>
+                        <p class="text-sm font-semibold uppercase tracking-wide text-signal">Business cases</p>
+                        <h2 class="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
+                            Where agentic infrastructure creates near-term leverage.
+                        </h2>
+                        <p class="mt-6 text-lg leading-8 text-zinc-600">
+                            Agnit focuses on work that already has clear volume, data, rules, and measurable outcomes.
+                            That makes agent adoption practical for executives, finance teams, IT leaders, and operators.
+                        </p>
+                    </div>
+                    <div class="grid gap-5 md:grid-cols-2">
+                        <article class="rounded border border-zinc-200 bg-white p-6 shadow-sm">
+                            <p class="text-sm font-semibold text-signal">Customer operations</p>
+                            <h3 class="mt-3 text-xl font-semibold">Resolution agents</h3>
+                            <p class="mt-3 text-sm leading-6 text-zinc-600">
+                                Triage cases, retrieve account context, summarize history, recommend next actions, draft
+                                responses, and escalate edge cases with a complete evidence pack.
+                            </p>
+                        </article>
+                        <article class="rounded border border-zinc-200 bg-white p-6 shadow-sm">
+                            <p class="text-sm font-semibold text-copper">Sales and RevOps</p>
+                            <h3 class="mt-3 text-xl font-semibold">Account intelligence agents</h3>
+                            <p class="mt-3 text-sm leading-6 text-zinc-600">
+                                Research accounts, prepare meeting briefs, update CRM fields, identify stalled deals,
+                                and support RFP responses from approved source material.
+                            </p>
+                        </article>
+                        <article class="rounded border border-zinc-200 bg-white p-6 shadow-sm">
+                            <p class="text-sm font-semibold text-sky-700">Finance</p>
+                            <h3 class="mt-3 text-xl font-semibold">Close and variance agents</h3>
+                            <p class="mt-3 text-sm leading-6 text-zinc-600">
+                                Reconcile inputs, explain changes, collect missing context, prepare variance narratives,
+                                and route review packets before finance leadership signs off.
+                            </p>
+                        </article>
+                        <article class="rounded border border-zinc-200 bg-white p-6 shadow-sm">
+                            <p class="text-sm font-semibold text-signal">IT and security</p>
+                            <h3 class="mt-3 text-xl font-semibold">Service desk and access agents</h3>
+                            <p class="mt-3 text-sm leading-6 text-zinc-600">
+                                Classify tickets, suggest remediations, check runbooks, coordinate access reviews, and
+                                monitor incidents while preserving approvals for sensitive actions.
+                            </p>
+                        </article>
+                        <article class="rounded border border-zinc-200 bg-white p-6 shadow-sm">
+                            <p class="text-sm font-semibold text-copper">Operations</p>
+                            <h3 class="mt-3 text-xl font-semibold">Exception management agents</h3>
+                            <p class="mt-3 text-sm leading-6 text-zinc-600">
+                                Detect supply, procurement, SLA, billing, or fulfillment exceptions, assemble causes,
+                                recommend actions, and notify the responsible team.
+                            </p>
+                        </article>
+                        <article class="rounded border border-zinc-200 bg-white p-6 shadow-sm">
+                            <p class="text-sm font-semibold text-sky-700">People operations</p>
+                            <h3 class="mt-3 text-xl font-semibold">Onboarding and policy agents</h3>
+                            <p class="mt-3 text-sm leading-6 text-zinc-600">
+                                Guide new hires, answer policy questions from approved documents, coordinate checklist
+                                completion, and surface blockers to managers.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 sm:py-28">
+            <div class="mx-auto max-w-7xl px-5 lg:px-8">
+                <div class="max-w-3xl">
+                    <p class="text-sm font-semibold uppercase tracking-wide text-signal">Examples</p>
+                    <h2 class="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
+                        Practical scenarios for business leaders.
+                    </h2>
+                </div>
+                <div class="mt-12 grid gap-6 lg:grid-cols-3">
+                    <article class="rounded border border-zinc-200 p-7">
+                        <div class="flex h-12 w-12 items-center justify-center rounded bg-teal-50 text-signal">
+                            <i data-lucide="headphones" class="h-6 w-6"></i>
+                        </div>
+                        <h3 class="mt-6 text-2xl font-semibold">Enterprise service desk</h3>
+                        <p class="mt-4 text-sm font-semibold uppercase tracking-wide text-zinc-500">Before</p>
+                        <p class="mt-2 text-sm leading-6 text-zinc-600">
+                            Agents, runbooks, knowledge articles, and asset records are spread across systems. Analysts
+                            spend time searching, rewriting, and escalating incomplete tickets.
+                        </p>
+                        <p class="mt-5 text-sm font-semibold uppercase tracking-wide text-zinc-500">Agentic workflow</p>
+                        <p class="mt-2 text-sm leading-6 text-zinc-600">
+                            An Agnit service agent classifies the issue, retrieves device and user context, checks
+                            runbooks, drafts remediation, requests approval for privileged steps, and logs the resolution.
+                        </p>
+                        <p class="mt-5 text-sm font-semibold uppercase tracking-wide text-zinc-500">Business value</p>
+                        <p class="mt-2 text-sm leading-6 text-zinc-600">
+                            Faster cycle times, more complete tickets, less repetitive analyst work, and a clearer audit
+                            trail for IT leadership.
+                        </p>
+                    </article>
+                    <article class="rounded border border-zinc-200 p-7">
+                        <div class="flex h-12 w-12 items-center justify-center rounded bg-amber-50 text-copper">
+                            <i data-lucide="factory" class="h-6 w-6"></i>
+                        </div>
+                        <h3 class="mt-6 text-2xl font-semibold">Supply exception control</h3>
+                        <p class="mt-4 text-sm font-semibold uppercase tracking-wide text-zinc-500">Before</p>
+                        <p class="mt-2 text-sm leading-6 text-zinc-600">
+                            Procurement, logistics, and sales teams discover supplier delays after downstream impact is
+                            already visible in customer commitments.
+                        </p>
+                        <p class="mt-5 text-sm font-semibold uppercase tracking-wide text-zinc-500">Agentic workflow</p>
+                        <p class="mt-2 text-sm leading-6 text-zinc-600">
+                            Agents monitor purchase orders, shipment data, supplier messages, and inventory signals,
+                            then prepare options with cost, customer impact, and escalation paths.
+                        </p>
+                        <p class="mt-5 text-sm font-semibold uppercase tracking-wide text-zinc-500">Business value</p>
+                        <p class="mt-2 text-sm leading-6 text-zinc-600">
+                            Earlier intervention, better cross-functional coordination, and fewer manual status meetings
+                            to understand the same exception.
+                        </p>
+                    </article>
+                    <article class="rounded border border-zinc-200 p-7">
+                        <div class="flex h-12 w-12 items-center justify-center rounded bg-sky-50 text-sky-700">
+                            <i data-lucide="file-check-2" class="h-6 w-6"></i>
+                        </div>
+                        <h3 class="mt-6 text-2xl font-semibold">Compliance evidence packs</h3>
+                        <p class="mt-4 text-sm font-semibold uppercase tracking-wide text-zinc-500">Before</p>
+                        <p class="mt-2 text-sm leading-6 text-zinc-600">
+                            Teams assemble policies, logs, tickets, screenshots, approvals, and explanations by hand
+                            for recurring audits and management reviews.
+                        </p>
+                        <p class="mt-5 text-sm font-semibold uppercase tracking-wide text-zinc-500">Agentic workflow</p>
+                        <p class="mt-2 text-sm leading-6 text-zinc-600">
+                            A governance agent gathers approved sources, checks completeness, flags gaps, drafts the
+                            narrative, and routes the packet to accountable owners.
+                        </p>
+                        <p class="mt-5 text-sm font-semibold uppercase tracking-wide text-zinc-500">Business value</p>
+                        <p class="mt-2 text-sm leading-6 text-zinc-600">
+                            Lower coordination cost, stronger review discipline, and a more reliable view of control
+                            readiness.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="trends" class="bg-ink py-20 text-white sm:py-28">
+            <div class="mx-auto max-w-7xl px-5 lg:px-8">
+                <div class="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+                    <div>
+                        <p class="text-sm font-semibold uppercase tracking-wide text-teal-300">Market trends</p>
+                        <h2 class="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
+                            The enterprise AI conversation is moving from novelty to infrastructure.
+                        </h2>
+                        <p class="mt-6 text-lg leading-8 text-zinc-300">
+                            Agnit is built for the shift business leaders are already managing: AI value must be tied to
+                            process outcomes, accountable controls, and adoption that survives beyond the first demo.
+                        </p>
+                    </div>
+                    <div class="grid gap-4">
+                        <div class="rounded border border-white/10 bg-white/[0.04] p-5">
+                            <h3 class="text-lg font-semibold">1. ROI is moving from seats to workflows.</h3>
+                            <p class="mt-2 text-sm leading-6 text-zinc-300">The durable question is not how many people
+                                have an AI tool. It is which workflows have measurable cycle-time, quality, revenue, or
+                                risk improvements.</p>
+                        </div>
+                        <div class="rounded border border-white/10 bg-white/[0.04] p-5">
+                            <h3 class="text-lg font-semibold">2. Governance is becoming a launch requirement.</h3>
+                            <p class="mt-2 text-sm leading-6 text-zinc-300">Agents that can act need policies,
+                                permissions, monitoring, approval paths, and clear accountability before they touch core
+                                business systems.</p>
+                        </div>
+                        <div class="rounded border border-white/10 bg-white/[0.04] p-5">
+                            <h3 class="text-lg font-semibold">3. Multi-model architecture is becoming normal.</h3>
+                            <p class="mt-2 text-sm leading-6 text-zinc-300">Different work needs different model
+                                choices for cost, latency, privacy, reasoning depth, and specialized capability.</p>
+                        </div>
+                        <div class="rounded border border-white/10 bg-white/[0.04] p-5">
+                            <h3 class="text-lg font-semibold">4. Process mining and agent orchestration are converging.</h3>
+                            <p class="mt-2 text-sm leading-6 text-zinc-300">Companies need to discover where work
+                                actually happens, then deploy agents into the highest-value paths with instrumentation.
+                            </p>
+                        </div>
+                        <div class="rounded border border-white/10 bg-white/[0.04] p-5">
+                            <h3 class="text-lg font-semibold">5. Human-in-loop is becoming exception design.</h3>
+                            <p class="mt-2 text-sm leading-6 text-zinc-300">Leaders are moving beyond generic review
+                                queues toward explicit risk tiers, confidence thresholds, and escalation triggers.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 sm:py-28">
+            <div class="mx-auto max-w-7xl px-5 lg:px-8">
+                <div class="max-w-3xl">
+                    <p class="text-sm font-semibold uppercase tracking-wide text-signal">Governance and trust</p>
+                    <h2 class="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
+                        Built for leaders who need control, not just capability.
+                    </h2>
+                    <p class="mt-6 text-lg leading-8 text-zinc-600">
+                        Agnit treats agents like production infrastructure. That means design choices are shaped by
+                        security, compliance, reliability, accountability, cost management, and change readiness from the
+                        start.
+                    </p>
+                </div>
+                <div class="mt-12 grid gap-6 lg:grid-cols-4">
+                    <div class="rounded border border-zinc-200 p-6">
+                        <i data-lucide="fingerprint" class="h-7 w-7 text-signal"></i>
+                        <h3 class="mt-5 font-semibold">Identity and permissions</h3>
+                        <p class="mt-3 text-sm leading-6 text-zinc-600">Agents operate with scoped identities, limited
+                            tool access, and role-aware data visibility.</p>
+                    </div>
+                    <div class="rounded border border-zinc-200 p-6">
+                        <i data-lucide="list-checks" class="h-7 w-7 text-copper"></i>
+                        <h3 class="mt-5 font-semibold">Policy and approval gates</h3>
+                        <p class="mt-3 text-sm leading-6 text-zinc-600">Sensitive actions require defined approvals,
+                            confidence checks, and escalation paths.</p>
+                    </div>
+                    <div class="rounded border border-zinc-200 p-6">
+                        <i data-lucide="activity" class="h-7 w-7 text-sky-700"></i>
+                        <h3 class="mt-5 font-semibold">Monitoring and evaluation</h3>
+                        <p class="mt-3 text-sm leading-6 text-zinc-600">Executives can inspect task outcomes, error
+                            patterns, cost, latency, usage, and adoption.</p>
+                    </div>
+                    <div class="rounded border border-zinc-200 p-6">
+                        <i data-lucide="archive-restore" class="h-7 w-7 text-signal"></i>
+                        <h3 class="mt-5 font-semibold">Audit and rollback</h3>
+                        <p class="mt-3 text-sm leading-6 text-zinc-600">Every action can be traced, reviewed, and
+                            corrected when workflows or policies need adjustment.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="engagement" class="bg-field py-20 sm:py-28">
+            <div class="mx-auto max-w-7xl px-5 lg:px-8">
+                <div class="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+                    <div>
+                        <p class="text-sm font-semibold uppercase tracking-wide text-signal">Consulting engagement</p>
+                        <h2 class="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
+                            A pragmatic path from agent idea to production capability.
+                        </h2>
+                        <p class="mt-6 text-lg leading-8 text-zinc-600">
+                            Agnit works with business and technology leaders to select use cases, prove value, build the
+                            infrastructure, and train teams to operate agents responsibly.
+                        </p>
+                    </div>
+                    <div class="space-y-5">
+                        <article class="rounded border border-zinc-200 bg-white p-6 shadow-sm">
+                            <div class="flex items-start gap-4">
+                                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded bg-ink text-sm font-semibold text-white">1</span>
+                                <div>
+                                    <h3 class="text-xl font-semibold">Opportunity map</h3>
+                                    <p class="mt-2 text-sm leading-6 text-zinc-600">
+                                        Inventory workflows, pain points, systems, risk constraints, data readiness, and
+                                        executive priorities. Rank use cases by value, feasibility, control burden, and
+                                        adoption path.
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="rounded border border-zinc-200 bg-white p-6 shadow-sm">
+                            <div class="flex items-start gap-4">
+                                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded bg-signal text-sm font-semibold text-white">2</span>
+                                <div>
+                                    <h3 class="text-xl font-semibold">Pilot with production discipline</h3>
+                                    <p class="mt-2 text-sm leading-6 text-zinc-600">
+                                        Build a focused agent workflow with real data, real users, instrumentation,
+                                        feedback loops, and a clear decision on whether to scale.
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="rounded border border-zinc-200 bg-white p-6 shadow-sm">
+                            <div class="flex items-start gap-4">
+                                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded bg-copper text-sm font-semibold text-white">3</span>
+                                <div>
+                                    <h3 class="text-xl font-semibold">Infrastructure and integration</h3>
+                                    <p class="mt-2 text-sm leading-6 text-zinc-600">
+                                        Connect enterprise systems, implement permissions, create dashboards, establish
+                                        governance routines, and prepare operational support.
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="rounded border border-zinc-200 bg-white p-6 shadow-sm">
+                            <div class="flex items-start gap-4">
+                                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded bg-sky-700 text-sm font-semibold text-white">4</span>
+                                <div>
+                                    <h3 class="text-xl font-semibold">Scale and improve</h3>
+                                    <p class="mt-2 text-sm leading-6 text-zinc-600">
+                                        Expand to adjacent workflows, tune agent performance, maintain controls, measure
+                                        business outcomes, and develop internal owners.
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 sm:py-28">
+            <div class="mx-auto max-w-7xl px-5 lg:px-8">
+                <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
+                    <div>
+                        <p class="text-sm font-semibold uppercase tracking-wide text-signal">Who should talk to Agnit</p>
+                        <h2 class="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
+                            Built for companies ready to move beyond AI experimentation.
+                        </h2>
+                        <p class="mt-6 text-lg leading-8 text-zinc-600">
+                            Agnit is a fit when leadership wants a practical agent strategy, a production platform, and
+                            experienced implementation support across business and IT.
+                        </p>
+                    </div>
+                    <div class="rounded border border-zinc-200 bg-white p-7 shadow-soft-xl">
+                        <h3 class="text-2xl font-semibold">Agnit is especially relevant when:</h3>
+                        <ul class="mt-6 space-y-4 text-sm leading-6 text-zinc-700">
+                            <li class="flex gap-3">
+                                <i data-lucide="check" class="mt-1 h-5 w-5 shrink-0 text-signal"></i>
+                                Your teams are using AI informally, but the company lacks common controls and metrics.
                             </li>
-                            <li class="flex gap-x-3">
-                                <svg class="mt-1 h-5 w-5 flex-none text-indigo-600" viewBox="0 0 20 20"
-                                    fill="currentColor" aria-hidden="true">
-                                    <path fill-rule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.236 4.53L8.23 10.661a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                <span><strong class="font-semibold text-gray-900 dark:text-white">Domain
-                                        Independence.</strong> Knowledge from one field doesn't create rigid
-                                    expectations for another.</span>
+                            <li class="flex gap-3">
+                                <i data-lucide="check" class="mt-1 h-5 w-5 shrink-0 text-signal"></i>
+                                You have repetitive business processes with high volume, handoffs, and searchable
+                                knowledge.
                             </li>
-                            <li class="flex gap-x-3">
-                                <svg class="mt-1 h-5 w-5 flex-none text-indigo-600" viewBox="0 0 20 20"
-                                    fill="currentColor" aria-hidden="true">
-                                    <path fill-rule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.236 4.53L8.23 10.661a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                <span><strong class="font-semibold text-gray-900 dark:text-white">Methodological
-                                        Neutrality.</strong> The approach to problem-solving emerges from the problem
-                                    itself, not from preset methodologies.</span>
+                            <li class="flex gap-3">
+                                <i data-lucide="check" class="mt-1 h-5 w-5 shrink-0 text-signal"></i>
+                                IT needs a way to support agents without creating unmanaged risk or tool sprawl.
+                            </li>
+                            <li class="flex gap-3">
+                                <i data-lucide="check" class="mt-1 h-5 w-5 shrink-0 text-signal"></i>
+                                Executives need a credible roadmap that connects AI investment to operating outcomes.
+                            </li>
+                            <li class="flex gap-3">
+                                <i data-lucide="check" class="mt-1 h-5 w-5 shrink-0 text-signal"></i>
+                                A successful pilot now needs integrations, observability, governance, and adoption work.
                             </li>
                         </ul>
-                        <p class="mt-8">This philosophy enables Agnit to discover novel solutions, identify patterns
-                            that human-biased systems might miss, and provide insights that transcend traditional
-                            disciplinary boundaries.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="py-24 sm:py-32">
-            <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                <div class="mx-auto max-w-2xl text-center">
-                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">Ready to
-                        Experience Agnostic Intelligence?</h2>
-                    <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-                        Join the future of truly unbiased, adaptive intelligence. Discover what's possible when AI
-                        operates without preconceptions.
-                    </p>
-                    <div class="mt-10 flex items-center justify-center gap-x-6">
-                        <a href="#"
-                            class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get
-                            Started</a>
-                        <a href="#" class="text-sm font-semibold leading-6 text-gray-900 dark:text-white">Contact Us
-                            <span aria-hidden="true">→</span></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="bg-gray-900">
-            <div class="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8">
-                <div class="flex justify-center space-x-6 md:order-2">
-                    <a href="#" class="text-gray-400 hover:text-gray-300">
-                        <span class="sr-only">GitHub</span>
-                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path fill-rule="evenodd"
-                                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                                clip-rule="evenodd" />
-                        </svg>
+        <section id="contact" class="bg-zinc-950 py-20 text-white sm:py-28">
+            <div class="mx-auto max-w-5xl px-5 text-center lg:px-8">
+                <p class="text-sm font-semibold uppercase tracking-wide text-teal-300">Start the conversation</p>
+                <h2 class="mt-4 text-4xl font-semibold tracking-tight sm:text-6xl">
+                    Bring agentic capabilities into the world of business with structure, speed, and control.
+                </h2>
+                <p class="mx-auto mt-6 max-w-3xl text-lg leading-8 text-zinc-300">
+                    Share the workflows you want to improve, the systems you need to connect, and the controls your
+                    organization requires. Agnit will help turn that into a practical agent infrastructure roadmap.
+                </p>
+                <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                    <a href="mailto:contact@agnit.com"
+                        class="inline-flex items-center justify-center gap-2 rounded bg-teal-300 px-6 py-3 text-sm font-semibold text-ink hover:bg-teal-200">
+                        <i data-lucide="mail" class="h-4 w-4"></i>
+                        contact@agnit.com
+                    </a>
+                    <a href="#platform"
+                        class="inline-flex items-center justify-center gap-2 rounded border border-white/20 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10">
+                        <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+                        Review the platform
                     </a>
                 </div>
-                <div class="mt-8 md:order-1 md:mt-0">
-                    <p class="text-center text-xs leading-5 text-gray-400">&copy; 2025 Agnit. Pioneering Agnostic
-                        Intelligence.</p>
-                </div>
             </div>
-        </footer>
-    </div>
+        </section>
+    </main>
+
+    <footer class="bg-white py-10">
+        <div class="mx-auto flex max-w-7xl flex-col gap-6 px-5 text-sm text-zinc-500 sm:flex-row sm:items-center sm:justify-between lg:px-8">
+            <div>
+                <p class="font-semibold text-ink">Agnit</p>
+                <p class="mt-1">Agentic IT infrastructure for business.</p>
+            </div>
+            <div class="flex flex-wrap gap-x-6 gap-y-2">
+                <a href="#platform" class="hover:text-ink">Platform</a>
+                <a href="#cases" class="hover:text-ink">Cases</a>
+                <a href="#trends" class="hover:text-ink">Trends</a>
+                <a href="mailto:contact@agnit.com" class="font-semibold text-signal hover:text-teal-900">contact@agnit.com</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        const menuToggle = document.getElementById("menu-toggle");
+        const mobileNav = document.getElementById("mobile-nav");
+
+        menuToggle.addEventListener("click", () => {
+            const isOpen = !mobileNav.classList.contains("hidden");
+            mobileNav.classList.toggle("hidden", isOpen);
+            menuToggle.setAttribute("aria-expanded", String(!isOpen));
+        });
+
+        mobileNav.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => {
+                mobileNav.classList.add("hidden");
+                menuToggle.setAttribute("aria-expanded", "false");
+            });
+        });
+    </script>
 </body>
 
 </html>

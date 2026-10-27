@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dealty by Agnit - Agentic Deal Desk for CRE Debt</title>
+    <meta name="description"
+        content="Dealty turns commercial real estate loan packages into evidence-backed lender shortlists. Agents extract facts, match and verify lenders, and draft outreach; brokers approve every step.">
+    <meta property="og:title" content="Dealty by Agnit - Agentic Deal Desk for CRE Debt">
+    <meta property="og:description"
+        content="From loan package to verified lender shortlist, with evidence on every fact and a human on every decision.">
+    <meta property="og:image" content="https://agnit.com/dealty/shots/broker-deal.webp">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ink: "#111827",
+                        field: "#f5f7f8",
+                        copper: "#b45309",
+                        signal: "#0f766e",
+                        steel: "#334155"
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"]
+                    },
+                    boxShadow: {
+                        "soft-xl": "0 24px 80px rgba(15, 23, 42, 0.14)"
+                    }
+                }
+            }
+        };
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            letter-spacing: 0;
+            overflow-x: hidden;
+        }
+
+        .grid-pattern {
+            background-image:
+                linear-gradient(rgba(15, 118, 110, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(15, 118, 110, 0.08) 1px, transparent 1px);
+            background-size: 44px 44px;
+        }
+
+        .grid-pattern-dark {
+            background-image:
+                radial-gradient(ellipse at 75% 20%, rgba(45, 212, 191, 0.16), transparent 55%),
+                linear-gradient(rgba(94, 234, 212, 0.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(94, 234, 212, 0.07) 1px, transparent 1px);
+            background-size: auto, 44px 44px, 44px 44px;
+        }
+
+        .browser {
+            border-radius: 12px;
+            overflow: hidden;
+            background: #e6e4df;
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.08);
+        }
+
+        .browser-bar {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 9px 12px;
+            background: #1c1c1a;
+        }
+
+        .browser-bar i.dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 9999px;
+            background: #3f3f3c;
+        }
+
+        .browser img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+
+        .reveal.in {
+            opacity: 1;
+            transform: none;
+        }
+
+        .feed-line {
+            animation: feed-in .45s ease both;
+        }
+
+        @keyframes feed-in {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        .stage-dot {
+            transition: background-color .35s ease, border-color .35s ease, color .35s ease, transform .35s ease;
+        }
+
+        .stage-dot.active {
+            transform: scale(1.12);
+        }
+
+        .fill-bar {
+            transition: width .6s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        .tour-tab[aria-selected="true"] {
+            background: #111827;
+            color: #fff;
+            border-color: #111827;
+        }
+
+        .shot-swap {
+            transition: opacity .35s ease;
+        }
+
+        input[type="range"] {
+            accent-color: #0f766e;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+
+            .feed-line {
+                animation: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-white text-ink antialiased">
+    <svg width="0" height="0" class="absolute" aria-hidden="true" focusable="false">
+        <symbol id="agnit-logo-mark" viewBox="0 0 989 271">
+            <path fill="currentColor" fill-rule="evenodd" d="M 794.0 44.0 L 787.0 48.0 L 782.0 53.0 L 782.0 54.0 L 780.0 56.0 L 780.0 58.0 L 778.0 62.0 L 778.0 74.0 L 783.0 84.0 L 784.0 84.0 L 786.0 86.0 L 786.0 87.0 L 787.0 87.0 L 789.0 89.0 L 798.0 93.0 L 803.0 93.0 L 804.0 94.0 L 815.0 94.0 L 816.0 93.0 L 819.0 93.0 L 820.0 94.0 L 833.0 94.0 L 835.0 95.0 L 840.0 101.0 L 840.0 104.0 L 841.0 105.0 L 841.0 212.0 L 842.0 213.0 L 842.0 215.0 L 846.0 223.0 L 850.0 227.0 L 858.0 232.0 L 860.0 232.0 L 861.0 233.0 L 866.0 233.0 L 867.0 234.0 L 869.0 233.0 L 877.0 233.0 L 878.0 232.0 L 880.0 232.0 L 884.0 230.0 L 890.0 225.0 L 890.0 224.0 L 893.0 221.0 L 894.0 217.0 L 896.0 214.0 L 896.0 106.0 L 897.0 105.0 L 897.0 101.0 L 898.0 99.0 L 904.0 94.0 L 910.0 94.0 L 911.0 93.0 L 913.0 93.0 L 914.0 94.0 L 915.0 93.0 L 921.0 93.0 L 922.0 94.0 L 929.0 94.0 L 930.0 93.0 L 940.0 93.0 L 941.0 92.0 L 944.0 92.0 L 950.0 89.0 L 957.0 82.0 L 960.0 76.0 L 960.0 73.0 L 961.0 72.0 L 961.0 64.0 L 960.0 63.0 L 960.0 60.0 L 957.0 54.0 L 950.0 47.0 L 944.0 44.0 L 941.0 44.0 L 940.0 43.0 L 798.0 43.0 L 797.0 44.0 Z M 716.0 43.0 L 715.0 44.0 L 713.0 44.0 L 709.0 46.0 L 701.0 54.0 L 701.0 55.0 L 699.0 57.0 L 699.0 59.0 L 697.0 63.0 L 697.0 199.0 L 696.0 200.0 L 697.0 201.0 L 697.0 211.0 L 698.0 212.0 L 699.0 217.0 L 702.0 221.0 L 702.0 222.0 L 710.0 230.0 L 712.0 231.0 L 714.0 231.0 L 717.0 233.0 L 733.0 233.0 L 734.0 232.0 L 736.0 232.0 L 740.0 230.0 L 748.0 222.0 L 751.0 216.0 L 751.0 213.0 L 752.0 212.0 L 752.0 71.0 L 751.0 70.0 L 751.0 64.0 L 748.0 58.0 L 748.0 56.0 L 746.0 54.0 L 746.0 53.0 L 741.0 48.0 L 740.0 48.0 L 738.0 46.0 L 734.0 44.0 L 731.0 44.0 L 730.0 43.0 Z M 282.0 63.0 L 271.0 74.0 L 263.0 85.0 L 258.0 95.0 L 252.0 116.0 L 251.0 136.0 L 252.0 137.0 L 252.0 151.0 L 258.0 173.0 L 267.0 190.0 L 285.0 210.0 L 306.0 223.0 L 330.0 230.0 L 400.0 231.0 L 413.0 229.0 L 428.0 223.0 L 434.0 219.0 L 445.0 208.0 L 450.0 199.0 L 453.0 189.0 L 453.0 145.0 L 447.0 130.0 L 440.0 123.0 L 433.0 119.0 L 425.0 117.0 L 360.0 117.0 L 354.0 119.0 L 345.0 127.0 L 342.0 134.0 L 342.0 144.0 L 345.0 151.0 L 351.0 157.0 L 358.0 160.0 L 389.0 160.0 L 397.0 162.0 L 400.0 165.0 L 400.0 171.0 L 397.0 174.0 L 391.0 176.0 L 350.0 176.0 L 332.0 173.0 L 323.0 168.0 L 313.0 158.0 L 309.0 150.0 L 307.0 142.0 L 307.0 127.0 L 309.0 119.0 L 317.0 106.0 L 328.0 98.0 L 342.0 94.0 L 422.0 94.0 L 435.0 88.0 L 442.0 79.0 L 444.0 73.0 L 444.0 65.0 L 441.0 56.0 L 434.0 48.0 L 423.0 43.0 L 327.0 43.0 L 305.0 49.0 L 290.0 57.0 Z M 506.0 61.0 L 494.0 73.0 L 484.0 88.0 L 478.0 103.0 L 476.0 115.0 L 475.0 116.0 L 475.0 210.0 L 476.0 214.0 L 482.0 224.0 L 491.0 231.0 L 497.0 233.0 L 504.0 233.0 L 505.0 234.0 L 506.0 233.0 L 513.0 233.0 L 519.0 231.0 L 529.0 222.0 L 533.0 214.0 L 533.0 209.0 L 534.0 208.0 L 534.0 118.0 L 535.0 114.0 L 542.0 101.0 L 550.0 94.0 L 561.0 90.0 L 573.0 90.0 L 581.0 92.0 L 591.0 98.0 L 597.0 105.0 L 602.0 116.0 L 602.0 120.0 L 603.0 121.0 L 603.0 210.0 L 606.0 219.0 L 615.0 229.0 L 625.0 233.0 L 639.0 233.0 L 645.0 231.0 L 651.0 227.0 L 657.0 220.0 L 661.0 209.0 L 661.0 116.0 L 655.0 94.0 L 650.0 84.0 L 641.0 72.0 L 628.0 60.0 L 619.0 54.0 L 607.0 48.0 L 591.0 43.0 L 578.0 42.0 L 577.0 41.0 L 558.0 41.0 L 557.0 42.0 L 549.0 42.0 L 548.0 43.0 L 536.0 45.0 L 519.0 52.0 Z M 84.0 54.0 L 81.0 57.0 L 76.0 60.0 L 70.0 66.0 L 69.0 66.0 L 59.0 78.0 L 50.0 94.0 L 50.0 96.0 L 47.0 103.0 L 47.0 106.0 L 46.0 107.0 L 46.0 111.0 L 45.0 112.0 L 45.0 116.0 L 44.0 117.0 L 44.0 210.0 L 45.0 211.0 L 45.0 214.0 L 48.0 221.0 L 53.0 227.0 L 65.0 233.0 L 81.0 233.0 L 82.0 232.0 L 87.0 231.0 L 93.0 227.0 L 98.0 221.0 L 101.0 214.0 L 101.0 211.0 L 102.0 210.0 L 103.0 205.0 L 106.0 200.0 L 111.0 195.0 L 116.0 192.0 L 118.0 192.0 L 122.0 190.0 L 128.0 190.0 L 129.0 189.0 L 130.0 190.0 L 131.0 189.0 L 133.0 189.0 L 134.0 190.0 L 142.0 190.0 L 143.0 191.0 L 146.0 191.0 L 154.0 195.0 L 162.0 204.0 L 164.0 211.0 L 165.0 212.0 L 165.0 215.0 L 168.0 221.0 L 172.0 226.0 L 173.0 226.0 L 179.0 231.0 L 181.0 231.0 L 185.0 233.0 L 193.0 233.0 L 194.0 234.0 L 195.0 233.0 L 202.0 233.0 L 212.0 228.0 L 218.0 222.0 L 222.0 212.0 L 222.0 115.0 L 221.0 114.0 L 220.0 105.0 L 219.0 104.0 L 217.0 96.0 L 214.0 91.0 L 214.0 89.0 L 212.0 87.0 L 208.0 79.0 L 190.0 60.0 L 189.0 60.0 L 183.0 55.0 L 172.0 49.0 L 170.0 49.0 L 167.0 47.0 L 161.0 46.0 L 157.0 44.0 L 154.0 44.0 L 153.0 43.0 L 141.0 42.0 L 140.0 41.0 L 124.0 41.0 L 123.0 42.0 L 116.0 42.0 L 115.0 43.0 L 111.0 43.0 L 110.0 44.0 L 107.0 44.0 L 106.0 45.0 L 98.0 47.0 Z M 125.0 89.0 L 140.0 89.0 L 141.0 90.0 L 143.0 90.0 L 147.0 92.0 L 149.0 94.0 L 150.0 94.0 L 156.0 100.0 L 156.0 101.0 L 159.0 105.0 L 159.0 107.0 L 160.0 108.0 L 160.0 111.0 L 161.0 112.0 L 161.0 133.0 L 160.0 134.0 L 160.0 138.0 L 158.0 141.0 L 158.0 143.0 L 156.0 145.0 L 156.0 146.0 L 147.0 154.0 L 145.0 155.0 L 143.0 155.0 L 142.0 156.0 L 140.0 156.0 L 139.0 157.0 L 127.0 157.0 L 126.0 156.0 L 123.0 156.0 L 117.0 153.0 L 109.0 145.0 L 107.0 141.0 L 106.0 136.0 L 105.0 135.0 L 105.0 128.0 L 104.0 127.0 L 104.0 118.0 L 105.0 117.0 L 105.0 111.0 L 106.0 110.0 L 107.0 105.0 L 110.0 101.0 L 110.0 100.0 L 117.0 93.0 Z" />
+        </symbol>
+    </svg>
+    <header class="absolute inset-x-0 top-0 z-50">
+        <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 lg:px-8" aria-label="Global">
+            <a href="/" class="flex items-center gap-3">
+                <span class="sr-only">Agnit</span>
+                <svg class="h-8 w-[117px] text-white sm:h-9 sm:w-[131px]" aria-hidden="true" focusable="false"><use href="#agnit-logo-mark"></use></svg>
+                <span class="hidden border-l border-white/25 pl-3 text-sm font-semibold text-white/90 sm:inline">Dealty</span>
+            </a>
+            <button id="menu-toggle" type="button"
+                class="inline-flex h-10 w-10 items-center justify-center rounded border border-white/20 bg-white/10 text-white lg:hidden"
+                aria-controls="mobile-nav" aria-expanded="false">
+                <span class="sr-only">Open navigation</span>
+                <i data-lucide="menu" class="h-5 w-5"></i>
+            </button>
+            <div class="hidden items-center gap-8 lg:flex">
+                <a href="#pipeline" class="text-sm font-medium text-white/80 hover:text-white">Pipeline</a>
+                <a href="#tour" class="text-sm font-medium text-white/80 hover:text-white">Product tour</a>
+                <a href="#roles" class="text-sm font-medium text-white/80 hover:text-white">Roles</a>
+                <a href="#match" class="text-sm font-medium text-white/80 hover:text-white">Match demo</a>
+                <a href="#controls" class="text-sm font-medium text-white/80 hover:text-white">Controls</a>
+                <a href="https://next.agnit.com"
+                    class="inline-flex items-center gap-2 rounded bg-white px-4 py-2 text-sm font-semibold text-ink hover:bg-teal-50">
+                    <i data-lucide="log-in" class="h-4 w-4"></i>
+                    Sign in
+                </a>
+            </div>
+        </nav>
+        <div id="mobile-nav" class="mx-5 hidden rounded border border-white/10 bg-ink/95 p-4 shadow-soft-xl lg:hidden">
+            <div class="grid gap-3">
+                <a href="#pipeline" class="text-sm font-medium text-white/80">Pipeline</a>
+                <a href="#tour" class="text-sm font-medium text-white/80">Product tour</a>
+                <a href="#roles" class="text-sm font-medium text-white/80">Roles</a>
+                <a href="#match" class="text-sm font-medium text-white/80">Match demo</a>
+                <a href="#controls" class="text-sm font-medium text-white/80">Controls</a>
+                <a href="https://next.agnit.com" class="text-sm font-semibold text-teal-200">Sign in to the portal</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="top">
+        <!-- Hero -->
+        <section class="grid-pattern-dark relative overflow-hidden bg-zinc-950 pb-16 pt-28 text-white sm:pt-32 lg:pb-24">
+            <div class="mx-auto grid max-w-7xl min-w-0 gap-12 px-5 lg:grid-cols-12 lg:items-center lg:px-8">
+                <div class="min-w-0 lg:col-span-5">
+                    <div
+                        class="inline-flex max-w-full items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-sm text-white/80 backdrop-blur">
+                        <i data-lucide="building-2" class="h-4 w-4 flex-none text-teal-200"></i>
+                        <span class="min-w-0 truncate">Agentic deal desk for commercial real estate debt</span>
+                    </div>
+                    <h1 class="mt-7 text-5xl font-semibold leading-[0.98] sm:text-6xl">
+                        Loan package in. Verified lender shortlist out.
+                    </h1>
+                    <p class="mt-6 text-lg leading-8 text-white/75">
+                        Dealty reads the borrower's documents, extracts every fact with its source, matches the deal
+                        against lender criteria, re-checks each match, and drafts the outreach. Brokers approve
+                        every share and every send.
+                    </p>
+                    <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+                        <a href="mailto:contact@agnit.com?subject=Dealty%20walkthrough"
+                            class="inline-flex w-full items-center justify-center gap-2 rounded bg-teal-300 px-4 py-3 text-sm font-semibold text-ink hover:bg-teal-200 sm:w-auto sm:px-5">
+                            <i data-lucide="calendar-check" class="h-4 w-4"></i>
+                            Book a walkthrough
+                        </a>
+                        <a href="#pipeline"
+                            class="inline-flex w-full items-center justify-center gap-2 rounded border border-white/25 px-4 py-3 text-sm font-semibold text-white hover:bg-white/10 sm:w-auto sm:px-5">
+                            <i data-lucide="play" class="h-4 w-4"></i>
+                            Watch a deal move
+                        </a>
+                    </div>
+                    <dl class="mt-10 grid grid-cols-3 gap-4 sm:gap-5">
+                        <div class="border-l border-teal-300/60 pl-3 sm:pl-4">
+                            <dt class="text-2xl font-semibold" data-count="6">6</dt>
+                            <dd class="mt-1 text-xs leading-5 text-white/70 sm:text-sm">agent stages, run one at a time</dd>
+                        </div>
+                        <div class="border-l border-amber-300/70 pl-3 sm:pl-4">
+                            <dt class="text-2xl font-semibold" data-count="3">3</dt>
+                            <dd class="mt-1 text-xs leading-5 text-white/70 sm:text-sm">role portals: broker, borrower, lender</dd>
+                        </div>
+                        <div class="border-l border-white/40 pl-3 sm:pl-4">
+                            <dt class="text-2xl font-semibold">0</dt>
+                            <dd class="mt-1 text-xs leading-5 text-white/70 sm:text-sm">messages sent without approval</dd>
+                        </div>
+                    </dl>
+                </div>
+
+                <div class="relative min-w-0 lg:col-span-7">
+                    <div class="browser">
+                        <div class="browser-bar">
+                            <i class="dot"></i><i class="dot"></i><i class="dot"></i>
+                            <span class="ml-3 truncate rounded bg-white/5 px-3 py-0.5 text-[11px] text-white/50">next.agnit.com/#/deal/harbor-point</span>
+                        </div>
+                        <img src="shots/broker-deal.webp" width="1600" height="1000"
+                            alt="Broker deal memo for Harbor Point Apartments: loan request, leverage, DSCR, NOI, file progress and review items (sample data)">
+                    </div>
+
+                    <!-- Live agent feed -->
+                    <div class="relative mt-4 rounded-lg border border-white/10 bg-zinc-900/95 p-4 shadow-soft-xl backdrop-blur sm:absolute sm:-bottom-16 sm:-left-8 sm:mt-0 sm:w-[23rem]"
+                        aria-live="polite">
+                        <div class="flex items-center justify-between">
+                            <p class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-teal-300">
+                                <span class="relative flex h-2 w-2"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-300 opacity-60"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-teal-300"></span></span>
+                                Agent activity
+                            </p>
+                            <span id="feed-stage" class="rounded bg-white/10 px-2 py-0.5 font-mono text-[11px] text-white/70">intake</span>
+                        </div>
+                        <ul id="feed" class="mt-3 grid min-h-[7.5rem] gap-2 font-mono text-[12px] leading-5 text-white/80"></ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Asset strip -->
+        <section class="border-y border-zinc-200 bg-field py-5">
+            <div class="mx-auto flex max-w-7xl flex-wrap items-center gap-x-8 gap-y-3 px-5 text-sm text-steel lg:px-8">
+                <span class="font-semibold text-ink">Built for CRE debt</span>
+                <span class="inline-flex items-center gap-2"><i data-lucide="building" class="h-4 w-4 text-signal"></i>Multifamily</span>
+                <span class="inline-flex items-center gap-2"><i data-lucide="warehouse" class="h-4 w-4 text-signal"></i>Industrial</span>
+                <span class="inline-flex items-center gap-2"><i data-lucide="store" class="h-4 w-4 text-signal"></i>Retail</span>
+                <span class="inline-flex items-center gap-2"><i data-lucide="briefcase" class="h-4 w-4 text-signal"></i>Office</span>
+                <span class="inline-flex items-center gap-2"><i data-lucide="layers" class="h-4 w-4 text-signal"></i>Bridge, acquisition, refinance</span>
+            </div>
+        </section>
+
+        <!-- Pipeline simulator -->
+        <section id="pipeline" class="py-20 sm:py-28">
+            <div class="mx-auto max-w-7xl px-5 lg:px-8">
+                <div class="reveal grid gap-10 lg:grid-cols-12">
+                    <div class="lg:col-span-5">
+                        <p class="text-sm font-semibold uppercase tracking-wide text-signal">How a deal moves</p>
+                        <h2 class="mt-4 text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+                            Six stages. Agents do the work, people make the calls.
+                        </h2>
+                        <p class="mt-6 text-lg leading-8 text-zinc-600">
+                            Each stage reads the deal record, does one job, and writes its result back with sources.
+                            Anything missing or uncertain becomes a review item for the broker or a question for the
+                            borrower. Nothing is inferred and nothing is sent.
+                        </p>
+                        <button id="sim-play" type="button"
+                            class="mt-8 inline-flex items-center gap-2 rounded bg-ink px-5 py-3 text-sm font-semibold text-white hover:bg-zinc-800">
+                            <i data-lucide="play" class="h-4 w-4"></i>
+                            <span>Simulate a deal</span>
+                        </button>
+                    </div>
+
+                    <div class="min-w-0 lg:col-span-7">
+                        <div class="rounded-lg border border-zinc-200 bg-white p-5 shadow-soft-xl sm:p-7">
+                            <div class="flex flex-wrap items-start justify-between gap-3">
+                                <div class="min-w-0">
+                                    <p class="text-xs font-semibold uppercase tracking-wide text-zinc-500">Sample deal</p>
+                                    <p class="mt-1 text-xl font-semibold">Maple Logistics Center acquisition</p>
+                                    <p class="mt-1 text-sm text-zinc-500">Industrial · Columbus, OH · $22.4M request</p>
+                                </div>
+                                <span id="sim-status"
+                                    class="rounded-full bg-zinc-100 px-3 py-1 text-xs font-semibold text-zinc-600">Waiting for documents</span>
+                            </div>
+
+                            <ol id="sim-stages" class="relative mt-8 grid grid-cols-6 gap-1">
+                                <div class="absolute left-[8.3%] right-[8.3%] top-4 h-0.5 bg-zinc-200" aria-hidden="true">
+                                    <div id="sim-fill" class="fill-bar h-full w-0 bg-signal"></div>
+                                </div>
+                            </ol>
+
+                            <div class="mt-8 grid gap-4 sm:grid-cols-2">
+                                <div class="rounded-md bg-field p-4">
+                                    <p class="text-xs font-semibold uppercase tracking-wide text-zinc-500">Agent</p>
+                                    <p id="sim-agent" class="mt-1 font-semibold">Intake</p>
+                                    <p id="sim-did" class="mt-2 text-sm leading-6 text-zinc-600">Press simulate to run the sample deal through every stage.</p>
+                                </div>
+                                <div class="rounded-md bg-field p-4">
+                                    <p class="text-xs font-semibold uppercase tracking-wide text-zinc-500">Record after this stage</p>
+                                    <dl class="mt-2 grid grid-cols-2 gap-2 text-sm">
+                                        <div><dt class="text-zinc-500">Facts</dt><dd id="m-facts" class="text-lg font-semibold">0</dd></div>
+                                        <div><dt class="text-zinc-500">Lenders</dt><dd id="m-lenders" class="text-lg font-semibold">0</dd></div>
+                                        <div><dt class="text-zinc-500">Open items</dt><dd id="m-items" class="text-lg font-semibold">0</dd></div>
+                                        <div><dt class="text-zinc-500">Drafts</dt><dd id="m-drafts" class="text-lg font-semibold">0</dd></div>
+                                    </dl>
+                                </div>
+                            </div>
+                            <p id="sim-gate" class="mt-4 hidden items-center gap-2 rounded-md border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+                                <i data-lucide="hand" class="h-4 w-4 flex-none"></i>
+                                <span>Human gate: the broker approves which lenders may see the teaser.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product tour -->
+        <section id="tour" class="bg-zinc-950 py-20 text-white sm:py-28">
+            <div class="mx-auto max-w-7xl px-5 lg:px-8">
+                <div class="reveal max-w-3xl">
+                    <p class="text-sm font-semibold uppercase tracking-wide text-teal-300">Product tour</p>
+                    <h2 class="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
+                        One workspace for the whole file.
+                    </h2>
+                    <p class="mt-6 text-lg leading-8 text-white/70">
+                        Real screens from the product, filled with fictional sample deals. Click a screen to enlarge it.
+                    </p>
+                </div>
+
+                <div class="reveal mt-12 grid gap-8 lg:grid-cols-12">
+                    <div class="min-w-0 lg:col-span-4">
+                        <div id="tour-tabs" class="flex gap-2 overflow-x-auto pb-2 lg:grid lg:overflow-visible lg:pb-0" role="tablist" aria-label="Product screens"></div>
+                        <div class="mt-6 rounded-lg border border-white/10 bg-white/5 p-5">
+                            <p id="tour-title" class="text-lg font-semibold"></p>
+                            <p id="tour-text" class="mt-2 text-sm leading-6 text-white/70"></p>
+                            <ul id="tour-points" class="mt-4 grid gap-2 text-sm text-white/80"></ul>
+                        </div>
+                    </div>
+                    <div class="min-w-0 lg:col-span-8">
+                        <button id="tour-open" type="button" class="browser block w-full cursor-zoom-in text-left" aria-label="Enlarge screenshot">
+                            <div class="browser-bar">
+                                <i class="dot"></i><i class="dot"></i><i class="dot"></i>
+                                <span id="tour-url" class="ml-3 truncate rounded bg-white/5 px-3 py-0.5 text-[11px] text-white/50"></span>
+                            </div>
+                            <img id="tour-shot" class="shot-swap" src="shots/broker-deals.webp" width="1600" height="1000" alt="">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roles -->
+        <section id="roles" class="py-20 sm:py-28">
+            <div class="mx-auto max-w-7xl px-5 lg:px-8">
+                <div class="reveal mx-auto max-w-3xl text-center">
+                    <p class="text-sm font-semibold uppercase tracking-wide text-signal">Three portals, one record</p>
+                    <h2 class="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
+                        Everyone sees exactly their part of the deal.
+                    </h2>
+                    <p class="mt-6 text-lg leading-8 text-zinc-600">
+                        Field allowlists are enforced on the server, deny by default. Borrowers never see lender
+                        notes; lenders see an anonymized teaser until the broker grants the package.
+                    </p>
+                </div>
+
+                <div class="mt-14 grid gap-6 lg:grid-cols-3">
+                    <article class="reveal flex flex-col overflow-hidden rounded-lg border border-zinc-200 bg-white">
+                        <button type="button" class="role-shot cursor-zoom-in border-b border-zinc-200 bg-[#e6e4df]" data-shot="broker-queue">
+                            <img src="shots/broker-queue.webp" width="1600" height="1000" loading="lazy" alt="Broker review queue with blockers, notes and questions (sample data)">
+                        </button>
+                        <div class="flex flex-1 flex-col p-6">
+                            <div class="flex items-center gap-3">
+                                <span class="inline-flex h-10 w-10 items-center justify-center rounded bg-ink text-white"><i data-lucide="briefcase-business" class="h-5 w-5"></i></span>
+                                <h3 class="text-xl font-semibold">Broker</h3>
+                            </div>
+                            <p class="mt-4 text-sm leading-6 text-zinc-600">Runs the desk. Sees every deal, fact, source and match.</p>
+                            <ul class="mt-4 grid gap-2 text-sm text-zinc-700">
+                                <li class="flex gap-2"><i data-lucide="check" class="mt-0.5 h-4 w-4 flex-none text-signal"></i>Review queue across all deals</li>
+                                <li class="flex gap-2"><i data-lucide="check" class="mt-0.5 h-4 w-4 flex-none text-signal"></i>Approve shares, grants and drafts</li>
+                                <li class="flex gap-2"><i data-lucide="check" class="mt-0.5 h-4 w-4 flex-none text-signal"></i>Underwriting workbook with Excel export</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="reveal flex flex-col overflow-hidden rounded-lg border border-zinc-200 bg-white">
+                        <button type="button" class="role-shot cursor-zoom-in border-b border-zinc-200 bg-[#e6e4df]" data-shot="borrower-deal">
+                            <img src="shots/borrower-deal.webp" width="1600" height="1000" loading="lazy" alt="Borrower view of a refinance request with an open question and status timeline (sample data)">
+                        </button>
+                        <div class="flex flex-1 flex-col p-6">
+                            <div class="flex items-center gap-3">
+                                <span class="inline-flex h-10 w-10 items-center justify-center rounded bg-teal-700 text-white"><i data-lucide="user-round" class="h-5 w-5"></i></span>
+                                <h3 class="text-xl font-semibold">Borrower</h3>
+                            </div>
+                            <p class="mt-4 text-sm leading-6 text-zinc-600">Submits the request and answers questions in one place.</p>
+                            <ul class="mt-4 grid gap-2 text-sm text-zinc-700">
+                                <li class="flex gap-2"><i data-lucide="check" class="mt-0.5 h-4 w-4 flex-none text-signal"></i>"What we need from you" with uploads</li>
+                                <li class="flex gap-2"><i data-lucide="check" class="mt-0.5 h-4 w-4 flex-none text-signal"></i>Status timeline from received to closed</li>
+                                <li class="flex gap-2"><i data-lucide="check" class="mt-0.5 h-4 w-4 flex-none text-signal"></i>Term sheets side by side</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="reveal flex flex-col overflow-hidden rounded-lg border border-zinc-200 bg-white">
+                        <button type="button" class="role-shot cursor-zoom-in border-b border-zinc-200 bg-[#e6e4df]" data-shot="lender-home">
+                            <img src="shots/lender-home.webp" width="1600" height="1000" loading="lazy" alt="Lender teaser inbox with anonymized multifamily and industrial requests (sample data)">
+                        </button>
+                        <div class="flex flex-1 flex-col p-6">
+                            <div class="flex items-center gap-3">
+                                <span class="inline-flex h-10 w-10 items-center justify-center rounded bg-copper text-white"><i data-lucide="landmark" class="h-5 w-5"></i></span>
+                                <h3 class="text-xl font-semibold">Lender</h3>
+                            </div>
+                            <p class="mt-4 text-sm leading-6 text-zinc-600">Gets teasers that fit, and the full package once access is granted.</p>
+                            <ul class="mt-4 grid gap-2 text-sm text-zinc-700">
+                                <li class="flex gap-2"><i data-lucide="check" class="mt-0.5 h-4 w-4 flex-none text-signal"></i>Ranged amounts and rounded metrics</li>
+                                <li class="flex gap-2"><i data-lucide="check" class="mt-0.5 h-4 w-4 flex-none text-signal"></i>Interested, pass or ask a question</li>
+                                <li class="flex gap-2"><i data-lucide="check" class="mt-0.5 h-4 w-4 flex-none text-signal"></i>Propose corrections to their own criteria</li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Match demo -->
+        <section id="match" class="grid-pattern bg-field py-20 sm:py-28">
+            <div class="mx-auto max-w-7xl px-5 lg:px-8">
+                <div class="reveal max-w-3xl">
+                    <p class="text-sm font-semibold uppercase tracking-wide text-signal">Try the matcher</p>
+                    <h2 class="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
+                        Every match shows its checks.
+                    </h2>
+                    <p class="mt-6 text-lg leading-8 text-zinc-600">
+                        Change the deal and watch the shortlist update. Each lender is a supported fit, needs
+                        clarification, or is excluded, with the criterion that decided it. The lenders below are
+                        fictional examples.
+                    </p>
+                </div>
+
+                <div class="reveal mt-12 grid gap-6 lg:grid-cols-12">
+                    <form id="match-form" class="rounded-lg border border-zinc-200 bg-white p-6 lg:col-span-4" onsubmit="return false">
+                        <label class="block text-sm font-semibold" for="f-asset">Asset type</label>
+                        <select id="f-asset" class="mt-2 w-full rounded border border-zinc-300 bg-white px-3 py-2 text-sm">
+                            <option value="multifamily">Multifamily</option>
+                            <option value="industrial">Industrial</option>
+                            <option value="retail">Retail</option>
+                            <option value="office">Office</option>
+                            <option value="self_storage">Self storage</option>
+                        </select>
+
+                        <label class="mt-5 block text-sm font-semibold" for="f-state">Property state</label>
+                        <select id="f-state" class="mt-2 w-full rounded border border-zinc-300 bg-white px-3 py-2 text-sm">
+                            <option value="SC">South Carolina</option>
+                            <option value="NC">North Carolina</option>
+                            <option value="OH">Ohio</option>
+                            <option value="TX">Texas</option>
+                            <option value="CA">California</option>
+                        </select>
+
+                        <div class="mt-5 flex items-baseline justify-between">
+                            <label class="text-sm font-semibold" for="f-amount">Loan amount</label>
+                            <output id="o-amount" class="font-mono text-sm text-signal"></output>
+                        </div>
+                        <input id="f-amount" type="range" min="1" max="60" step="0.5" value="18.5" class="mt-2 w-full">
+
+                        <div class="mt-5 flex items-baseline justify-between">
+                            <label class="text-sm font-semibold" for="f-ltv">Leverage (LTV)</label>
+                            <output id="o-ltv" class="font-mono text-sm text-signal"></output>
+                        </div>
+                        <input id="f-ltv" type="range" min="40" max="85" step="1" value="68" class="mt-2 w-full">
+
+                        <div class="mt-5 flex items-baseline justify-between">
+                            <label class="text-sm font-semibold" for="f-dscr">DSCR</label>
+                            <output id="o-dscr" class="font-mono text-sm text-signal"></output>
+                        </div>
+                        <input id="f-dscr" type="range" min="1.0" max="1.8" step="0.01" value="1.31" class="mt-2 w-full">
+
+                        <div class="mt-6 grid grid-cols-3 gap-2 text-center">
+                            <div class="rounded bg-teal-50 p-2"><p id="c-fit" class="text-xl font-semibold text-teal-800">0</p><p class="text-[11px] text-teal-900">fit</p></div>
+                            <div class="rounded bg-amber-50 p-2"><p id="c-clar" class="text-xl font-semibold text-amber-800">0</p><p class="text-[11px] text-amber-900">clarify</p></div>
+                            <div class="rounded bg-zinc-100 p-2"><p id="c-out" class="text-xl font-semibold text-zinc-600">0</p><p class="text-[11px] text-zinc-600">excluded</p></div>
+                        </div>
+                    </form>
+
+                    <div class="min-w-0 lg:col-span-8">
+                        <ul id="match-list" class="grid gap-3" aria-live="polite"></ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Controls -->
+        <section id="controls" class="bg-ink py-20 text-white sm:py-28">
+            <div class="mx-auto max-w-7xl px-5 lg:px-8">
+                <div class="reveal grid gap-10 lg:grid-cols-12">
+                    <div class="lg:col-span-5">
+                        <p class="text-sm font-semibold uppercase tracking-wide text-teal-300">Controls by design</p>
+                        <h2 class="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
+                            Fast where it's safe. Strict where it matters.
+                        </h2>
+                        <p class="mt-6 text-lg leading-8 text-white/70">
+                            Credit work runs on evidence and judgment. Dealty speeds up the reading, matching and
+                            drafting, and keeps the judgment with your team.
+                        </p>
+                    </div>
+                    <div class="grid gap-4 sm:grid-cols-2 lg:col-span-7">
+                        <div class="rounded-lg border border-white/10 bg-white/5 p-5">
+                            <i data-lucide="file-search" class="h-6 w-6 text-teal-300"></i>
+                            <h3 class="mt-4 font-semibold">Evidence on every fact</h3>
+                            <p class="mt-2 text-sm leading-6 text-white/65">Each figure carries its source document, page and basis. No source, no fact.</p>
+                        </div>
+                        <div class="rounded-lg border border-white/10 bg-white/5 p-5">
+                            <i data-lucide="user-check" class="h-6 w-6 text-amber-300"></i>
+                            <h3 class="mt-4 font-semibold">Agents never approve</h3>
+                            <p class="mt-2 text-sm leading-6 text-white/65">Shares, access grants and decisions come only from signed-in people.</p>
+                        </div>
+                        <div class="rounded-lg border border-white/10 bg-white/5 p-5">
+                            <i data-lucide="mail-x" class="h-6 w-6 text-teal-300"></i>
+                            <h3 class="mt-4 font-semibold">Draft-only outreach</h3>
+                            <p class="mt-2 text-sm leading-6 text-white/65">Lender emails are prepared for review. Nothing leaves without you.</p>
+                        </div>
+                        <div class="rounded-lg border border-white/10 bg-white/5 p-5">
+                            <i data-lucide="shield-check" class="h-6 w-6 text-amber-300"></i>
+                            <h3 class="mt-4 font-semibold">Deny-by-default sharing</h3>
+                            <p class="mt-2 text-sm leading-6 text-white/65">Role allowlists on the server; portal input is treated as data, never instructions.</p>
+                        </div>
+                        <div class="rounded-lg border border-white/10 bg-white/5 p-5">
+                            <i data-lucide="hard-drive" class="h-6 w-6 text-teal-300"></i>
+                            <h3 class="mt-4 font-semibold">Your files stay yours</h3>
+                            <p class="mt-2 text-sm leading-6 text-white/65">Deal records live on your machine. The hosted portal serves only what each account may see.</p>
+                        </div>
+                        <div class="rounded-lg border border-white/10 bg-white/5 p-5">
+                            <i data-lucide="history" class="h-6 w-6 text-amber-300"></i>
+                            <h3 class="mt-4 font-semibold">Full activity trail</h3>
+                            <p class="mt-2 text-sm leading-6 text-white/65">Every agent run, answer and decision is logged with who, when and why.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Workflow + underwriting -->
+        <section class="py-20 sm:py-28">
+            <div class="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-2 lg:px-8">
+                <div class="reveal min-w-0">
+                    <p class="text-sm font-semibold uppercase tracking-wide text-signal">Workflow map</p>
+                    <h2 class="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">See where every deal is waiting.</h2>
+                    <p class="mt-4 leading-7 text-zinc-600">Live counts on every agent, human gate and portal. Click a node for its prompt, inputs and outputs.</p>
+                    <button type="button" class="role-shot browser mt-8 block w-full cursor-zoom-in" data-shot="viewer-workflow">
+                        <img src="shots/viewer-workflow.webp" width="1600" height="1000" loading="lazy" alt="Workflow map showing sources, agents, human review and outputs with live deal counts (sample data)">
+                    </button>
+                </div>
+                <div class="reveal min-w-0">
+                    <p class="text-sm font-semibold uppercase tracking-wide text-signal">Underwriting</p>
+                    <h2 class="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">A workbook built from the record.</h2>
+                    <p class="mt-4 leading-7 text-zinc-600">Cover to conclusion, generated from extracted facts. Edit assumptions, export to Excel with live formulas.</p>
+                    <button type="button" class="role-shot browser mt-8 block w-full cursor-zoom-in" data-shot="viewer-underwriting">
+                        <img src="shots/viewer-underwriting.webp" width="1600" height="884" loading="lazy" alt="Underwriting workbook tab for a retail refinance with day-one value and proposed loan (sample data)">
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Steps -->
+        <section class="border-t border-zinc-200 bg-field py-20 sm:py-28">
+            <div class="mx-auto max-w-7xl px-5 lg:px-8">
+                <div class="reveal max-w-3xl">
+                    <p class="text-sm font-semibold uppercase tracking-wide text-signal">Getting started</p>
+                    <h2 class="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">From first call to a live deal.</h2>
+                </div>
+                <ol class="mt-12 grid gap-6 md:grid-cols-3">
+                    <li class="reveal rounded-lg border border-zinc-200 bg-white p-6">
+                        <span class="font-mono text-sm text-copper">01</span>
+                        <h3 class="mt-3 text-xl font-semibold">Load your lender list</h3>
+                        <p class="mt-3 text-sm leading-6 text-zinc-600">We import your lenders and audit their published criteria, with a source link for each rule.</p>
+                    </li>
+                    <li class="reveal rounded-lg border border-zinc-200 bg-white p-6">
+                        <span class="font-mono text-sm text-copper">02</span>
+                        <h3 class="mt-3 text-xl font-semibold">Drop in a live deal</h3>
+                        <p class="mt-3 text-sm leading-6 text-zinc-600">PDFs and Word files go in; a structured deal memo, questions and a shortlist come out.</p>
+                    </li>
+                    <li class="reveal rounded-lg border border-zinc-200 bg-white p-6">
+                        <span class="font-mono text-sm text-copper">03</span>
+                        <h3 class="mt-3 text-xl font-semibold">Invite your team</h3>
+                        <p class="mt-3 text-sm leading-6 text-zinc-600">Brokers, borrowers and lenders sign in to their own portal. You approve what each one sees.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="grid-pattern-dark bg-zinc-950 py-20 text-white">
+            <div class="reveal mx-auto flex max-w-7xl flex-col items-start gap-8 px-5 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+                <div class="max-w-2xl">
+                    <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">Put an agent team on your next deal.</h2>
+                    <p class="mt-4 text-lg leading-8 text-white/70">We set up Dealty with your lenders and walk your team through a live file.</p>
+                </div>
+                <div class="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+                    <a href="mailto:contact@agnit.com?subject=Dealty%20walkthrough"
+                        class="inline-flex items-center justify-center gap-2 rounded bg-teal-300 px-5 py-3 text-sm font-semibold text-ink hover:bg-teal-200">
+                        <i data-lucide="send" class="h-4 w-4"></i>
+                        contact@agnit.com
+                    </a>
+                    <a href="https://next.agnit.com"
+                        class="inline-flex items-center justify-center gap-2 rounded border border-white/25 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10">
+                        <i data-lucide="log-in" class="h-4 w-4"></i>
+                        Sign in
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-zinc-950 py-10">
+        <div class="mx-auto flex max-w-7xl flex-col gap-6 border-t border-white/10 px-5 pt-10 text-sm text-zinc-400 sm:flex-row sm:items-center sm:justify-between lg:px-8">
+            <div>
+                <a href="/" class="inline-block"><span class="sr-only">Agnit</span><svg class="h-8 w-[117px] text-white" aria-hidden="true" focusable="false"><use href="#agnit-logo-mark"></use></svg></a>
+                <p class="mt-3">Dealty, an agentic deal desk by Agnit. Screens show fictional sample data.</p>
+            </div>
+            <div class="flex flex-wrap gap-x-6 gap-y-2">
+                <a href="#pipeline" class="hover:text-white">Pipeline</a>
+                <a href="#tour" class="hover:text-white">Tour</a>
+                <a href="#match" class="hover:text-white">Match demo</a>
+                <a href="/" class="hover:text-white">Agnit</a>
+                <a href="mailto:contact@agnit.com" class="font-semibold text-teal-300 hover:text-teal-200">contact@agnit.com</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/85 p-4 backdrop-blur-sm" role="dialog" aria-modal="true" aria-label="Screenshot">
+        <button id="lightbox-close" type="button" class="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded bg-white/10 text-white hover:bg-white/20">
+            <span class="sr-only">Close</span><i data-lucide="x" class="h-5 w-5"></i>
+        </button>
+        <img id="lightbox-img" class="max-h-[90vh] max-w-full rounded-lg shadow-soft-xl" alt="">
+    </div>
+
+    <script>
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        /* ---------- Mobile nav (same as agnit.com) ---------- */
+        const menuToggle = document.getElementById("menu-toggle");
+        const mobileNav = document.getElementById("mobile-nav");
+        menuToggle.addEventListener("click", () => {
+            const isOpen = !mobileNav.classList.contains("hidden");
+            mobileNav.classList.toggle("hidden", isOpen);
+            menuToggle.setAttribute("aria-expanded", String(!isOpen));
+        });
+        mobileNav.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => {
+                mobileNav.classList.add("hidden");
+                menuToggle.setAttribute("aria-expanded", "false");
+            });
+        });
+
+        /* ---------- Scroll reveal ---------- */
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("in");
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        document.querySelectorAll(".reveal").forEach((node) => revealObserver.observe(node));
+
+        /* ---------- Hero agent feed (sample events) ---------- */
+        const feedEvents = [
+            ["intake", "Harbor Point Apartments: 1 document received"],
+            ["intake", "14 facts extracted, each with page reference"],
+            ["intake", "question → borrower: itemized renovation budget"],
+            ["shortlist", "6 lenders screened on asset, size, leverage"],
+            ["shortlist", "2 candidates: multifamily bridge, $15M–$20M"],
+            ["verify", "Example Lender: 5/5 checks pass, sources cited"],
+            ["verify", "1 fit downgraded: DSCR floor needs confirming"],
+            ["review", "broker approved teaser share to 2 lenders"],
+            ["outreach", "2 lender email drafts ready, not sent"],
+        ];
+        const feed = document.getElementById("feed");
+        const feedStage = document.getElementById("feed-stage");
+        let feedIndex = 0;
+        function pushFeed() {
+            const [stage, text] = feedEvents[feedIndex % feedEvents.length];
+            feedStage.textContent = stage;
+            const time = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+            const li = document.createElement("li");
+            li.className = "feed-line flex gap-3";
+            const stamp = document.createElement("span");
+            stamp.className = "flex-none text-white/35";
+            stamp.textContent = time;
+            const body = document.createElement("span");
+            body.className = "min-w-0";
+            body.textContent = text;
+            li.append(stamp, body);
+            feed.prepend(li);
+            while (feed.children.length > 4) feed.lastElementChild.remove();
+            feedIndex += 1;
+        }
+        for (let i = 0; i < 3; i++) pushFeed();
+        if (!reduceMotion) setInterval(pushFeed, 2600);
+
+        /* ---------- Pipeline simulator ---------- */
+        const stages = [
+            { key: "Intake", icon: "file-input", status: "Extracting facts", did: "Read the offering memo, T-12 and rent roll. Extracted 18 facts with page references; flagged the missing anchor lease term.", facts: 18, lenders: 0, items: 2, drafts: 0 },
+            { key: "Shortlist", icon: "list-filter", status: "Matching lenders", did: "Screened 6 lenders on asset type, loan size, leverage, DSCR and geography. 3 candidates move on.", facts: 18, lenders: 3, items: 2, drafts: 0 },
+            { key: "Verify", icon: "badge-check", status: "Verifying matches", did: "Re-checked each candidate against cited criteria. 2 supported fits; 1 needs clarification on minimum DSCR.", facts: 18, lenders: 2, items: 3, drafts: 0 },
+            { key: "Review", icon: "user-check", status: "Waiting for broker", did: "Broker resolved 3 items, answered from the borrower portal, and approved the teaser share.", facts: 19, lenders: 2, items: 0, drafts: 0, gate: true },
+            { key: "Outreach", icon: "pen-line", status: "Drafts ready", did: "Planner drafted one email per approved lender with the teaser attached. Drafts wait in the broker's queue.", facts: 19, lenders: 2, items: 0, drafts: 2 },
+            { key: "Done", icon: "flag", status: "Term sheets in", did: "Lenders responded in their portal; 2 term sheets compared side by side for the borrower.", facts: 19, lenders: 2, items: 0, drafts: 2 },
+        ];
+        const stageList = document.getElementById("sim-stages");
+        stages.forEach((stage, index) => {
+            const li = document.createElement("li");
+            li.className = "relative z-10 flex flex-col items-center gap-2 text-center";
+            li.innerHTML = `<span class="stage-dot inline-flex h-8 w-8 items-center justify-center rounded-full border-2 border-zinc-200 bg-white text-zinc-400"><i data-lucide="${stage.icon}" class="h-4 w-4"></i></span><span class="text-[11px] font-medium text-zinc-500 sm:text-xs">${stage.key}</span>`;
+            li.dataset.index = index;
+            stageList.appendChild(li);
+        });
+
+        const simEls = {
+            fill: document.getElementById("sim-fill"), status: document.getElementById("sim-status"),
+            agent: document.getElementById("sim-agent"), did: document.getElementById("sim-did"),
+            gate: document.getElementById("sim-gate"), play: document.getElementById("sim-play"),
+            facts: document.getElementById("m-facts"), lenders: document.getElementById("m-lenders"),
+            items: document.getElementById("m-items"), drafts: document.getElementById("m-drafts"),
+        };
+        function tween(el, to) {
+            const from = Number(el.textContent) || 0;
+            if (reduceMotion || from === to) { el.textContent = to; return; }
+            const start = performance.now();
+            const step = (now) => {
+                const t = Math.min(1, (now - start) / 500);
+                el.textContent = Math.round(from + (to - from) * t);
+                if (t < 1) requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+        }
+        function showStage(index) {
+            const stage = stages[index];
+            simEls.fill.style.width = `${(index / (stages.length - 1)) * 100}%`;
+            stageList.querySelectorAll("li").forEach((li) => {
+                const i = Number(li.dataset.index);
+                const dot = li.querySelector(".stage-dot");
+                dot.classList.toggle("active", i === index);
+                dot.className = dot.className.replace(/border-(?!2\b)\S+|bg-\S+|text-\S+/g, "").trim();
+                dot.classList.add(...(i < index ? ["border-signal", "bg-signal", "text-white"]
+                    : i === index ? ["border-signal", "bg-white", "text-signal"] : ["border-zinc-200", "bg-white", "text-zinc-400"]));
+            });
+            simEls.status.textContent = stage.status;
+            simEls.status.className = `rounded-full px-3 py-1 text-xs font-semibold ${stage.gate ? "bg-amber-100 text-amber-900" : index === stages.length - 1 ? "bg-teal-100 text-teal-900" : "bg-zinc-100 text-zinc-700"}`;
+            simEls.agent.textContent = stage.key === "Review" ? "Broker (human gate)" : stage.key === "Done" ? "Lender portal" : `${stage.key} agent`;
+            simEls.did.textContent = stage.did;
+            simEls.gate.classList.toggle("hidden", !stage.gate);
+            simEls.gate.classList.toggle("flex", !!stage.gate);
+            tween(simEls.facts, stage.facts); tween(simEls.lenders, stage.lenders);
+            tween(simEls.items, stage.items); tween(simEls.drafts, stage.drafts);
+        }
+        let simTimer = null;
+        function runSim() {
+            clearTimeout(simTimer);
+            let index = 0;
+            simEls.play.querySelector("span").textContent = "Replay";
+            const tick = () => {
+                showStage(index);
+                index += 1;
+                if (index < stages.length) simTimer = setTimeout(tick, stages[index - 1].gate ? 2600 : 1800);
+            };
+            tick();
+        }
+        simEls.play.addEventListener("click", runSim);
+        stageList.addEventListener("click", (event) => {
+            const li = event.target.closest("li[data-index]");
+            if (li) { clearTimeout(simTimer); showStage(Number(li.dataset.index)); }
+        });
+        const simObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) { runSim(); simObserver.disconnect(); }
+        }, { threshold: 0.45 });
+        simObserver.observe(document.getElementById("pipeline"));
+
+        /* ---------- Product tour ---------- */
+        const tour = [
+            { id: "broker-deals", label: "Pipeline", icon: "layout-dashboard", url: "next.agnit.com/#/",
+              title: "Pipeline overview", text: "Every deal with its stage, status and open items. Filter by stage or by what needs attention.",
+              points: ["Stage progress at a glance", "Blockers and open questions counted per deal", "Search and filter across the book"] },
+            { id: "broker-deal", label: "Deal memo", icon: "file-text", url: "next.agnit.com/#/deal/harbor-point",
+              title: "Deal review memorandum", text: "The deal as a memo: request, leverage, DSCR, NOI, facts, scenarios, matches and term sheets.",
+              points: ["Facts link back to the source page", "Next stage command ready to copy", "Document map for long files"] },
+            { id: "broker-queue", label: "Review queue", icon: "inbox", url: "next.agnit.com/#/queue",
+              title: "Review queue", text: "Everything an agent could not settle on its own, grouped by deal and by who has to answer.",
+              points: ["Blockers, questions and notes", "Resolutions recorded as answers, facts untouched", "Borrower questions go to their portal"] },
+            { id: "viewer-workflow", label: "Workflow", icon: "workflow", url: "localhost · workflow",
+              title: "Workflow map", text: "Sources, agents, human gates and outputs as a live graph with deal counts on every node.",
+              points: ["Simulate a deal end to end", "Open any agent's prompt", "Feedback loops from lenders and borrowers"] },
+            { id: "viewer-underwriting", label: "Underwriting", icon: "table", url: "localhost · underwriting",
+              title: "Underwriting workbook", text: "A full workbook generated from the record, from cover to conclusion.",
+              points: ["Day-one value and proposed loan", "Editable assumptions", "Excel export with live formulas"] },
+        ];
+        const tabs = document.getElementById("tour-tabs");
+        const shot = document.getElementById("tour-shot");
+        tour.forEach((item, index) => {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.role = "tab";
+            button.className = "tour-tab inline-flex flex-none items-center gap-2 rounded border border-white/15 px-4 py-2.5 text-left text-sm font-medium text-white/80 hover:bg-white/10";
+            button.innerHTML = `<i data-lucide="${item.icon}" class="h-4 w-4"></i><span></span>`;
+            button.querySelector("span").textContent = item.label;
+            button.addEventListener("click", () => { selectTour(index); stopTourAuto(); });
+            tabs.appendChild(button);
+        });
+        let tourIndex = 0;
+        function selectTour(index) {
+            tourIndex = index;
+            const item = tour[index];
+            tabs.querySelectorAll("button").forEach((b, i) => b.setAttribute("aria-selected", String(i === index)));
+            document.getElementById("tour-title").textContent = item.title;
+            document.getElementById("tour-text").textContent = item.text;
+            document.getElementById("tour-url").textContent = item.url;
+            const points = document.getElementById("tour-points");
+            points.replaceChildren(...item.points.map((p) => {
+                const li = document.createElement("li");
+                li.className = "flex gap-2";
+                li.innerHTML = '<i data-lucide="check" class="mt-0.5 h-4 w-4 flex-none text-teal-300"></i><span></span>';
+                li.querySelector("span").textContent = p;
+                return li;
+            }));
+            shot.style.opacity = "0";
+            setTimeout(() => {
+                shot.src = `shots/${item.id}.webp`;
+                shot.alt = `${item.title} (sample data)`;
+                shot.onload = () => { shot.style.opacity = "1"; };
+            }, reduceMotion ? 0 : 180);
+            lucide.createIcons();
+        }
+        let tourAuto = reduceMotion ? null : setInterval(() => selectTour((tourIndex + 1) % tour.length), 6000);
+        function stopTourAuto() { clearInterval(tourAuto); tourAuto = null; }
+        selectTour(0);
+
+        /* ---------- Lightbox ---------- */
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+        function openLightbox(src, alt) {
+            lightboxImg.src = src;
+            lightboxImg.alt = alt || "";
+            lightbox.classList.remove("hidden");
+            lightbox.classList.add("flex");
+            document.getElementById("lightbox-close").focus();
+        }
+        function closeLightbox() {
+            lightbox.classList.add("hidden");
+            lightbox.classList.remove("flex");
+        }
+        document.getElementById("tour-open").addEventListener("click", () => { stopTourAuto(); openLightbox(shot.src, shot.alt); });
+        document.querySelectorAll(".role-shot").forEach((button) => {
+            button.addEventListener("click", () => {
+                const img = button.querySelector("img");
+                openLightbox(img.src, img.alt);
+            });
+        });
+        lightbox.addEventListener("click", (event) => { if (event.target === lightbox) closeLightbox(); });
+        document.getElementById("lightbox-close").addEventListener("click", closeLightbox);
+        document.addEventListener("keydown", (event) => { if (event.key === "Escape") closeLightbox(); });
+
+        /* ---------- Match demo (fictional lenders) ---------- */
+        const lenders = [
+            { name: "Harborline Credit Partners", product: "Bridge", assets: ["multifamily", "industrial"], min: 5, max: 40, ltv: 75, dscr: 1.25, states: ["SC", "NC", "GA", "OH"] },
+            { name: "Summit Ridge Lending", product: "Balance sheet", assets: ["multifamily", "retail", "office"], min: 2, max: 20, ltv: 70, dscr: 1.30, states: "all" },
+            { name: "Bluestem Debt Fund", product: "Acquisition", assets: ["industrial", "self_storage"], min: 10, max: 60, ltv: 70, dscr: 1.20, states: ["OH", "TX"] },
+            { name: "Keel & Oak Capital", product: "Refinance", assets: ["retail", "office"], min: 3, max: 25, ltv: 65, dscr: 1.35, states: ["NC", "SC"] },
+            { name: "Lantern Bridge Lenders", product: "Bridge", assets: ["multifamily", "self_storage"], min: 1, max: 20, ltv: 65, dscr: 1.15, states: "all" },
+            { name: "Copperline Life Co.", product: "Permanent", assets: ["industrial", "multifamily", "retail"], min: 15, max: 100, ltv: 60, dscr: 1.40, states: "all" },
+        ];
+        const assetLabel = { multifamily: "Multifamily", industrial: "Industrial", retail: "Retail", office: "Office", self_storage: "Self storage" };
+        const f = {
+            asset: document.getElementById("f-asset"), state: document.getElementById("f-state"),
+            amount: document.getElementById("f-amount"), ltv: document.getElementById("f-ltv"), dscr: document.getElementById("f-dscr"),
+        };
+        function evaluate(lender, deal) {
+            const checks = [];
+            const add = (label, outcome, detail) => checks.push({ label, outcome, detail });
+            add("Asset", lender.assets.includes(deal.asset) ? "pass" : "fail", lender.assets.map((a) => assetLabel[a]).join(", "));
+            add("Size", deal.amount >= lender.min && deal.amount <= lender.max ? "pass" : "fail", `$${lender.min}M–$${lender.max}M`);
+            add("State", lender.states === "all" || lender.states.includes(deal.state) ? "pass" : "fail", lender.states === "all" ? "National" : lender.states.join(", "));
+            const ltvGap = deal.ltv - lender.ltv;
+            add("LTV", ltvGap <= 0 ? "pass" : ltvGap <= 5 ? "clarify" : "fail", `max ${lender.ltv}%`);
+            const dscrGap = lender.dscr - deal.dscr;
+            add("DSCR", dscrGap <= 0 ? "pass" : dscrGap <= 0.05 + 1e-9 ? "clarify" : "fail", `min ${lender.dscr.toFixed(2)}x`);
+            const status = checks.some((c) => c.outcome === "fail") ? "excluded" : checks.some((c) => c.outcome === "clarify") ? "clarify" : "fit";
+            return { status, checks };
+        }
+        const statusStyle = {
+            fit: ["Supported fit", "bg-teal-100 text-teal-900", "border-teal-200"],
+            clarify: ["Needs clarification", "bg-amber-100 text-amber-900", "border-amber-200"],
+            excluded: ["Excluded", "bg-zinc-100 text-zinc-600", "border-zinc-200 opacity-70"],
+        };
+        const checkStyle = { pass: "bg-teal-50 text-teal-800", clarify: "bg-amber-50 text-amber-800", fail: "bg-rose-50 text-rose-800" };
+        const checkIcon = { pass: "✓", clarify: "?", fail: "✕" };
+        function renderMatches() {
+            const deal = { asset: f.asset.value, state: f.state.value, amount: Number(f.amount.value), ltv: Number(f.ltv.value), dscr: Number(f.dscr.value) };
+            document.getElementById("o-amount").textContent = `$${deal.amount.toFixed(1)}M`;
+            document.getElementById("o-ltv").textContent = `${deal.ltv}%`;
+            document.getElementById("o-dscr").textContent = `${deal.dscr.toFixed(2)}x`;
+            const order = { fit: 0, clarify: 1, excluded: 2 };
+            const results = lenders.map((l) => ({ lender: l, ...evaluate(l, deal) })).sort((a, b) => order[a.status] - order[b.status]);
+            const counts = { fit: 0, clarify: 0, excluded: 0 };
+            const list = document.getElementById("match-list");
+            list.replaceChildren(...results.map(({ lender, status, checks }) => {
+                counts[status] += 1;
+                const [label, badge, border] = statusStyle[status];
+                const li = document.createElement("li");
+                li.className = `rounded-lg border bg-white p-4 transition ${border}`;
+                const head = document.createElement("div");
+                head.className = "flex flex-wrap items-center justify-between gap-2";
+                const name = document.createElement("div");
+                name.className = "min-w-0";
+                name.innerHTML = '<p class="font-semibold"></p><p class="text-xs text-zinc-500"></p>';
+                name.children[0].textContent = lender.name;
+                name.children[1].textContent = `${lender.product} · fictional lender`;
+                const pill = document.createElement("span");
+                pill.className = `rounded-full px-3 py-1 text-xs font-semibold ${badge}`;
+                pill.textContent = label;
+                head.append(name, pill);
+                const row = document.createElement("div");
+                row.className = "mt-3 flex flex-wrap gap-1.5";
+                checks.forEach((c) => {
+                    const chip = document.createElement("span");
+                    chip.className = `rounded px-2 py-1 font-mono text-[11px] ${checkStyle[c.outcome]}`;
+                    chip.textContent = `${checkIcon[c.outcome]} ${c.label}: ${c.detail}`;
+                    row.appendChild(chip);
+                });
+                li.append(head, row);
+                return li;
+            }));
+            document.getElementById("c-fit").textContent = counts.fit;
+            document.getElementById("c-clar").textContent = counts.clarify;
+            document.getElementById("c-out").textContent = counts.excluded;
+        }
+        Object.values(f).forEach((input) => input.addEventListener("input", renderMatches));
+        renderMatches();
+
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
